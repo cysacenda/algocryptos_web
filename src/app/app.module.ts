@@ -4,11 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule} from "@angular/material";
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatButtonModule, MatFormField, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatPaginatorModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
 import { CryptokpisComponent } from './cryptokpis/cryptokpis.component';
 import { GlobalkpisComponent } from './globalkpis/globalkpis.component';
-import {HeaderComponent} from "./header/header.component";
+import {HeaderComponent} from './header/header.component';
 
 
 @NgModule({
@@ -26,7 +31,12 @@ import {HeaderComponent} from "./header/header.component";
     MatToolbarModule,
     NoopAnimationsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
