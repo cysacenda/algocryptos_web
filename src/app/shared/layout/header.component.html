@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="mat-elevation-z5">
+  <span>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+       <i class="material-icons">menu</i>
+    </button>
+  </span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="app-toolbar-filler"></span>
+
+</mat-toolbar>
+
+<mat-menu #appMenu="matMenu">
+  <button routerLink="/globalkpis" mat-menu-item>
+    <i class="material-icons">trending_up</i>
+    Global KPIs </button>
+  <button routerLink="/cryptokpis" mat-menu-item>
+    <i class="material-icons">trending_up</i>
+    Crypto KPI </button>
+  <button routerLink="/settings" mat-menu-item>
+    <i class="material-icons">settings</i>
+    Settings </button>
+  <button routerLink="/help" mat-menu-item>
+    <i class="material-icons">help</i>
+    Help </button>
+</mat-menu>
