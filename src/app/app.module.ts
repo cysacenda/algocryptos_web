@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import {HeaderComponent} from "./shared/layout/header.component";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
-import {MatMenuModule, MatToolbarModule} from "@angular/material";
+import {MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule} from "@angular/material";
 import { CryptokpisComponent } from './cryptokpis/cryptokpis.component';
 import { GlobalkpisComponent } from './globalkpis/globalkpis.component';
+import {HeaderComponent} from "./header/header.component";
 
 
 @NgModule({
@@ -24,7 +24,9 @@ import { GlobalkpisComponent } from './globalkpis/globalkpis.component';
     BrowserAnimationsModule,
     MatMenuModule,
     MatToolbarModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
