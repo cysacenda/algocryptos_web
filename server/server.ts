@@ -3,7 +3,7 @@ import * as cors from 'cors';
 import * as express from 'express';
 import * as morgan from 'morgan';
 // api
-import {PlanningParamsApi} from './api/planning-params.api';
+import {CoinsApi} from './api/coins.api';
 import errorHandler = require('errorhandler');
 
 /**
@@ -65,7 +65,7 @@ export class Server {
     });
 
     // create API routes
-    PlanningParamsApi.create(router);
+    CoinsApi.create(router);
     // PlanningTaskApi.create(router);
     // PlanningResourceApi.create(router);
     // PlanningProjectApi.create(router);
