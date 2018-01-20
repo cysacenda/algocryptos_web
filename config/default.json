@@ -1,0 +1,9 @@
+// Doc : https://www.npmjs.com/package/config
+{
+  // App Db
+  "dbConfig": {
+    "dbAdress": "mongodb://localhost:27017/planning-csa"
+  },
+  "filesPath": {
+  }
+}
