@@ -4,14 +4,15 @@
 let server = require('./server');
 let debug = require('debug')('express:server');
 let http = require('http');
+let config = require('config');
 
 // create http server
 let httpPort = process.env.PORT || 3000;
-let serv = server.Server.bootstrap();
+let serv = server.Server.bootstrap(config.get('dbConfig.dbAdress'));
 let app = serv.app;
 
-let config = require('config');
-serv.openConnection(config.get('dbConfig.dbAdress'));
+
+// serv.openConnection(config.get('dbConfig.dbAdress'));
 
 app.set('port', httpPort);
 let httpServer = http.createServer(app);

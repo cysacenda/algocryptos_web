@@ -5,6 +5,7 @@ import * as morgan from 'morgan';
 // api
 import {CoinsApi} from './api/coins.api';
 import errorHandler = require('errorhandler');
+import { Pool, Client } from 'pg';
 
 /**
  * The server.
@@ -21,22 +22,37 @@ export class Server {
   public app: express.Application;
 
   /**
+   * The Database connexion
+   */
+  private dbAdress: string;
+
+  /**
+   * The Database connexion
+   */
+  public pool: Pool;
+
+  /**
    * Bootstrap the application.
    * @static
    */
-  public static bootstrap(): Server {
-    return new Server();
+  public static bootstrap(dbAdress: string): Server {
+    return new Server(dbAdress);
   }
 
   /**
    * @constructor
    */
-  constructor() {
+  constructor(dbAdress: string) {
+    this.dbAdress = dbAdress;
+
     // create expressjs application
     this.app = express();
 
     // configure application
     this.config();
+
+    // connect to database
+    this.openConnection(this.dbAdress);
 
     // add api
     this.api();
@@ -65,7 +81,7 @@ export class Server {
     });
 
     // create API routes
-    CoinsApi.create(router);
+    CoinsApi.create(router, this.pool);
     // PlanningTaskApi.create(router);
     // PlanningResourceApi.create(router);
     // PlanningProjectApi.create(router);
@@ -109,18 +125,21 @@ export class Server {
     }); */
   }
 
-  public openConnection(dbAdress: string) {
-    // connect to mongoose
-    // mongoose.connect(dbAdress, {useMongoClient: true});
-    /* mongoose.Promise = require('bluebird');
-    mongoose.connect(dbAdress,
-      {
-        useMongoClient: true,
-      });
+  private openConnection(connectionString: string) {
+    // https://node-postgres.com/
 
-    mongoose.connection.on('error', error => {
-      console.error(error);
-    }); */
+    this.pool = new Pool({
+      connectionString: connectionString,
+    });
+
+    this.pool.on('error', (err, client) => {
+      console.error('Unexpected error on idle client', err);
+    });
+
+    /*this.pool.query('SELECT * from public.coins', (err, res) => {
+      console.log(err, res);
+      // this.pool.end();
+    });*/
   }
 }
 

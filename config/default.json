@@ -2,7 +2,7 @@
 {
   // App Db
   "dbConfig": {
-    "dbAdress": "mongodb://localhost:27017/planning-csa"
+    "dbAdress": "postgresql://dbuser:algocryptos@localhost:5432/algocryptos"
   },
   "filesPath": {
   }

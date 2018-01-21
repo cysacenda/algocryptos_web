@@ -1,8 +1,9 @@
 // express
 import {NextFunction, Response, Request, Router} from 'express';
+import { Pool, Client } from 'pg';
 
 export class CoinsApi {
-  public static create(router: Router) {
+  public static create(router: Router, pool: Pool) {
     // DELETE
     router.delete('/coins/:id([0-9a-f]{24})', (req: Request, res: Response, next: NextFunction) => {
       new CoinsApi().delete(req, res, next);
@@ -10,7 +11,7 @@ export class CoinsApi {
 
     // GET
     router.get('/coins', (req: Request, res: Response, next: NextFunction) => {
-      new CoinsApi().list(req, res, next);
+      new CoinsApi().list(req, res, next, pool);
     });
     router.get('/coins/:id([0-9a-f]{24})', (req: Request, res: Response, next: NextFunction) => {
       new CoinsApi().get(req, res, next);
@@ -37,10 +38,12 @@ export class CoinsApi {
   public get (req: Request, res: Response, next: NextFunction) {
   }
 
-  public list(req: Request, res: Response, next: NextFunction) {
-    console.log('TEST CSA');
-    next();
-    return;
+  public list(req: Request, res: Response, next: NextFunction, pool: Pool) {
+    pool.query('SELECT * from public.coins', (err, resp) => {
+      // console.log(err, resp);
+      res.json(resp)
+      next();
+    });
   }
 
   public update(req: Request, res: Response, next: NextFunction) {
