@@ -14,6 +14,9 @@ import {
 import { CryptokpisComponent } from './cryptokpis/cryptokpis.component';
 import { GlobalkpisComponent } from './globalkpis/globalkpis.component';
 import {HeaderComponent} from './header/header.component';
+import {HttpClientModule} from '@angular/common/http';
+import {CommonModule} from '@angular/common';
+import {ApiService} from './api.service';
 
 
 @NgModule({
@@ -24,6 +27,7 @@ import {HeaderComponent} from './header/header.component';
     GlobalkpisComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -36,9 +40,10 @@ import {HeaderComponent} from './header/header.component';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 

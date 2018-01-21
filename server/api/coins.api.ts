@@ -39,9 +39,9 @@ export class CoinsApi {
   }
 
   public list(req: Request, res: Response, next: NextFunction, pool: Pool) {
-    pool.query('SELECT * from public.coins', (err, resp) => {
+    pool.query('SELECT "IdCryptoCompare", "Name", "Symbol" from public.coins', (err, resp) => {
       // console.log(err, resp);
-      res.json(resp)
+      res.json(resp['rows']);
       next();
     });
   }
