@@ -39,7 +39,20 @@ export class CoinsApi {
   }
 
   public list(req: Request, res: Response, next: NextFunction, pool: Pool) {
-    pool.query('SELECT "IdCryptoCompare", "Name", "Symbol" from public.coins', (err, resp) => {
+    let squery: String = '';
+    /*
+    squery = 'select co."IdCryptoCompare", co."Name", co."Symbol", pr.price_usd, pr.market_cap_usd, pr.rank, pr.percent_change_1h, pr.percent_change_24h, pr.percent_change_7d\n';
+    squery += 'from coins as co\n';
+    squery += 'inner join prices as pr on (co."IdCryptoCompare" = pr."IdCryptoCompare")\n';
+    */
+
+    squery = 'select co."IdCryptoCompare", co."Name", co."Symbol", pr.price_usd, pr.market_cap_usd, pr.rank, pr.percent_change_1h, pr.percent_change_24h, pr.percent_change_7d, max(sr."Reddit_subscribers") as reddit_subscribers, max(sr.timestamp) as timestamp \n';
+    squery += 'from coins as co\n';
+    squery += 'inner join prices as pr on (co."IdCryptoCompare" = pr."IdCryptoCompare")\n';
+    squery += 'left outer join social_stats_reddit sr on (sr."IdCoinCryptoCompare" = co."IdCryptoCompare")\n';
+    squery += 'group by co."IdCryptoCompare", co."Name", co."Symbol", pr.price_usd, pr.market_cap_usd, pr.rank, pr.percent_change_1h, pr.percent_change_24h, pr.percent_change_7d\n';
+
+    pool.query(squery, (err, resp) => {
       // console.log(err, resp);
       res.json(resp['rows']);
       next();

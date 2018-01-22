@@ -2,6 +2,7 @@ import {Component, ViewChild, OnInit, AfterViewInit} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {ApiService} from '../api.service';
 import {Coins} from '../models/coins.model';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-cryptokpis',
@@ -10,7 +11,7 @@ import {Coins} from '../models/coins.model';
 })
 export class CryptokpisComponent implements OnInit, AfterViewInit {
   coins: Coins [];
-  displayedColumns = ['IdCryptoCompare', 'Name', 'Symbol'];
+  displayedColumns = ['rank', 'Name', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h', 'percent_change_24h', 'percent_change_7d', 'reddit_subscribers'];
   dataSource: MatTableDataSource<Coins>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -43,6 +44,10 @@ export class CryptokpisComponent implements OnInit, AfterViewInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  setColor(percent: number) : string {
+    return percent >= 0 ? 'LimeGreen' : 'Red';
   }
 }
 

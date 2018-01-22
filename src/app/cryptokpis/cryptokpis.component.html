@@ -8,10 +8,10 @@
 
   <mat-table [dataSource]="dataSource" matSort>
 
-    <!-- ID Column -->
-    <ng-container matColumnDef="IdCryptoCompare">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.IdCryptoCompare}} </mat-cell>
+    <!-- rank Column -->
+    <ng-container matColumnDef="rank">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Rank </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.rank}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
@@ -26,10 +26,46 @@
       <mat-cell *matCellDef="let row"> {{row.Symbol}} </mat-cell>
     </ng-container>
 
+    <!-- price_usd Column -->
+    <ng-container matColumnDef="price_usd">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Price ($) </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.price_usd | currency:'USD':'symbol':'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- market_cap_usd Column -->
+    <ng-container matColumnDef="market_cap_usd">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Market Cap ($)</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.market_cap_usd | currency:'USD':'symbol':'1.0-0'}} </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_1h Column -->
+    <ng-container matColumnDef="percent_change_1h">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 1h Change </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_1h)"> {{row.percent_change_1h / 100 | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_24h Column -->
+    <ng-container matColumnDef="percent_change_24h">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 24h Change </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_24h)"> {{row.percent_change_24h / 100 | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_7d Column -->
+    <ng-container matColumnDef="percent_change_7d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 7d Change </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_7d)"> {{row.percent_change_7d / 100 | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Reddit subscribers column -->
+    <ng-container matColumnDef="reddit_subscribers">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.reddit_subscribers}} </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">
     </mat-row>
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[50, 100, 200, 300, 500]"></mat-paginator>
 </div>
