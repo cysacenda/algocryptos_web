@@ -62,9 +62,55 @@
       <mat-cell *matCellDef="let row"> {{row.reddit_subscribers}} </mat-cell>
     </ng-container>
 
+
+
+    <!-- Reddit subscribers 1d trend column -->
+    <ng-container matColumnDef="subscribers_1d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers 1d trend </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_1d_trend)"> {{row.subscribers_1d_trend | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Reddit subscribers 3d trend column -->
+    <ng-container matColumnDef="subscribers_3d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers 3d trend </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_3d_trend)"> {{row.subscribers_3d_trend | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Reddit subscribers 7d trend column -->
+    <ng-container matColumnDef="subscribers_7d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers 7d trend </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_7d_trend)"> {{row.subscribers_7d_trend | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Reddit subscribers 15d trend column -->
+    <ng-container matColumnDef="subscribers_15d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers 15d trend </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_15d_trend)"> {{row.subscribers_15d_trend | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Reddit subscribers 30d trend column -->
+    <ng-container matColumnDef="subscribers_30d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers 30d trend </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_30d_trend)"> {{row.subscribers_30d_trend | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Reddit subscribers 60d trend column -->
+    <ng-container matColumnDef="subscribers_60d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers 60d trend </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_60d_trend)"> {{row.subscribers_60d_trend | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Reddit subscribers 90d trend column -->
+    <ng-container matColumnDef="subscribers_90d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers 90d trend </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_90d_trend)"> {{row.subscribers_90d_trend | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">
     </mat-row>
+
   </mat-table>
 
   <mat-paginator [pageSizeOptions]="[50, 100, 200, 300, 500]"></mat-paginator>

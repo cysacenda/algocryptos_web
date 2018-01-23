@@ -11,7 +11,8 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class CryptokpisComponent implements OnInit, AfterViewInit {
   coins: Coins [];
-  displayedColumns = ['rank', 'Name', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h', 'percent_change_24h', 'percent_change_7d', 'reddit_subscribers'];
+  displayedColumns = ['rank', 'Name', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h', 'percent_change_24h', 'percent_change_7d', 'reddit_subscribers', 'subscribers_1d_trend',  'subscribers_3d_trend', 'subscribers_7d_trend', 'subscribers_15d_trend', 'subscribers_30d_trend', 'subscribers_60d_trend', 'subscribers_90d_trend'];
+
   dataSource: MatTableDataSource<Coins>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
