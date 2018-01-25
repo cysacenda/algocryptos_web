@@ -1,6 +1,6 @@
 export interface Coins {
   IdCryptoCompare: number;
-  Name: String;
+  CoinName: String;
   Symbol: String;
   price_usd: number;
   market_cap_usd: number;
