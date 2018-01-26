@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {ProcessesInfosComponent} from '../app-processes-infos';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  private processesStatus() {
+    const dialogRef = this.dialog.open(ProcessesInfosComponent);
   }
 }

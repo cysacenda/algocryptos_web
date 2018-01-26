@@ -8,7 +8,19 @@
   <h1 class="md-title text-center">AlgoCryptos</h1>
 
   <!-- This fills the remaining space of the current row -->
-  <!--<span class="app-toolbar-filler"></span>-->
+  <span class="app-toolbar-filler"></span>
+
+  <span>
+    <button mat-button (click)="processesStatus()">
+       <i class="material-icons">error_outline</i>
+    Status
+    </button>
+
+    <!--<button mat-icon-button [matMenuTriggerFor]="actionMenu">-->
+    <button mat-icon-button>
+       <i class="material-icons">more_vert</i>
+    </button>
+  </span>
 
 </mat-toolbar>
 
@@ -26,3 +38,11 @@
     <i class="material-icons">help</i>
     Help </button>
 </mat-menu>
+
+<!--
+<mat-menu #actionMenu="matMenu">
+  <button mat-menu-item (click)="moveToNextWeek()">
+    <i class="material-icons">redo</i>
+    Action 1 </button>
+</mat-menu>
+-->

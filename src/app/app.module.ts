@@ -6,7 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatFormField, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatPaginatorModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatFormField, MatFormFieldModule, MatIconModule, MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule
@@ -17,6 +20,7 @@ import {HeaderComponent} from './header/header.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {ApiService} from './api.service';
+import {ProcessesInfosComponent} from './app-processes-infos';
 
 
 @NgModule({
@@ -24,7 +28,8 @@ import {ApiService} from './api.service';
     AppComponent,
     HeaderComponent,
     CryptokpisComponent,
-    GlobalkpisComponent
+    GlobalkpisComponent,
+    ProcessesInfosComponent
   ],
   imports: [
     CommonModule,
@@ -41,9 +46,18 @@ import {ApiService} from './api.service';
     MatPaginatorModule,
     MatInputModule,
     MatSortModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatCardModule,
+    MatListModule
   ],
-  providers: [ApiService],
+  entryComponents: [
+    ProcessesInfosComponent
+  ],
+  exports: [
+    ProcessesInfosComponent
+  ],
+  providers: [ApiService, MatDialogModule],
   bootstrap: [AppComponent]
 })
 

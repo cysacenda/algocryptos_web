@@ -18,11 +18,11 @@ export class CryptokpisComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private planningService: ApiService) {
+  constructor(private apiService: ApiService) {
   }
 
   ngOnInit() {
-    this.planningService.getCoins()
+    this.apiService.getCoins()
       .then(coins => {
         this.coins = coins;
         // Assign the data to the data source for the table to render

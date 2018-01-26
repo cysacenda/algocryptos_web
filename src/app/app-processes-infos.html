@@ -1,0 +1,14 @@
+<div *ngIf="processes.length != 0">
+  <h1>Running processes on server :</h1>
+  <mat-card>
+    <mat-list>
+      <mat-list-item *ngFor="let process of processes">
+          {{ process.IdProcess + ' - ' + process.Name + ' - ' + (process.timestamp | date:'short')}}
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
+
+<div *ngIf="processes.length == 0">
+    No process running for the moment.
+</div>

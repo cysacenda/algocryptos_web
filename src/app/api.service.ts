@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import {Coins} from './models/coins.model';
+import {ProcessesInfos} from "./models/processes-infos.model";
 
 @Injectable()
 export class ApiService {
@@ -12,6 +13,7 @@ export class ApiService {
 
   // URL to web api
   private coinsUrl: string = this.basicURL + environment.coinsUrl;
+  private processesInfosUrl: string = this.basicURL + environment.processesInfosUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +23,16 @@ export class ApiService {
       .toPromise()
       .then((response) => {
         return response as Coins[];
+      })
+      .catch(this.handleError);
+  }
+
+  public getProcessesInfos(): Promise<Array<ProcessesInfos>> {
+    return this.http
+      .get(this.processesInfosUrl)
+      .toPromise()
+      .then((response) => {
+        return response as ProcessesInfos[];
       })
       .catch(this.handleError);
   }
