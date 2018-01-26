@@ -17,7 +17,7 @@
     <!-- CoinName Column -->
     <ng-container matColumnDef="CoinName">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.CoinName}}</mat-cell>
+      <mat-cell *matCellDef="let row"><a target="_blank" [href]="'https://coinmarketcap.com/currencies/' + row.namecmc + '/'">{{row.CoinName}}</a> </mat-cell>
     </ng-container>
 
     <!-- Symbol Column -->
@@ -113,5 +113,5 @@
 
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[50, 100, 200, 300, 500]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[100, 200, 300, 500]"></mat-paginator>
 </div>

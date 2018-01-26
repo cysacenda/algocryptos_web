@@ -40,7 +40,7 @@ export class CoinsApi {
 
   public list(req: Request, res: Response, next: NextFunction, pool: Pool) {
     let squery: String = '';
-    squery = 'select co."IdCryptoCompare", co."CoinName", co."Symbol", pr.price_usd, pr.market_cap_usd, pr.rank, pr.percent_change_1h,\n';
+    squery = 'select co."IdCryptoCompare", co."CoinName", co."Symbol", pr.price_usd, pr.market_cap_usd, pr.rank, replace(pr."Name", \' \', \'-\') as NameCMC, pr.percent_change_1h,\n';
     squery += 'pr.percent_change_24h, pr.percent_change_7d, max(sr."Reddit_subscribers") as reddit_subscribers, max(sr.timestamp) as timestamp_reddit_subscribers,\n';
     squery += 'kp.subscribers_1d_trend, kp.subscribers_3d_trend, kp.subscribers_7d_trend, kp.subscribers_15d_trend, kp.subscribers_30d_trend, kp.subscribers_60d_trend,\n';
     squery += 'kp.subscribers_90d_trend, max(kp."timestamp") as timestamp_reddit_trend\n';
@@ -48,13 +48,13 @@ export class CoinsApi {
     squery += 'inner join prices as pr on (co."IdCryptoCompare" = pr."IdCryptoCompare")\n';
     squery += 'left outer join social_stats_reddit sr on (sr."IdCoinCryptoCompare" = co."IdCryptoCompare")\n';
     squery += 'left outer join kpi_reddit_subscribers kp on (kp."IdCryptoCompare" = co."IdCryptoCompare")\n';
-    squery += 'group by co."IdCryptoCompare", co."CoinName", co."Symbol", pr.price_usd, pr.market_cap_usd, pr.rank, pr.percent_change_1h,\n';
+    squery += 'group by co."IdCryptoCompare", co."CoinName", co."Symbol", pr.price_usd, pr.market_cap_usd, pr.rank, NameCMC, pr.percent_change_1h,\n';
     squery += 'pr.percent_change_24h, pr.percent_change_7d,kp.subscribers_1d_trend, kp.subscribers_3d_trend, kp.subscribers_7d_trend, kp.subscribers_15d_trend,\n';
     squery += 'kp.subscribers_30d_trend, kp.subscribers_60d_trend, kp.subscribers_90d_trend\n';
     squery += 'order by market_cap_usd desc\n';
     pool.query(squery, (err, resp) => {
       // console.log(err, resp);
-      console.log(squery);
+      // console.log(squery);
       res.json(resp['rows']);
       next();
     });

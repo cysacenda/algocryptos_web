@@ -6,6 +6,7 @@ import * as morgan from 'morgan';
 import {CoinsApi} from './api/coins.api';
 import errorHandler = require('errorhandler');
 import { Pool, Client } from 'pg';
+import {ParamsApi} from "./api/params.api";
 
 /**
  * The server.
@@ -82,10 +83,7 @@ export class Server {
 
     // create API routes
     CoinsApi.create(router, this.pool);
-    // PlanningTaskApi.create(router);
-    // PlanningResourceApi.create(router);
-    // PlanningProjectApi.create(router);
-    // PlanningVacationApi.create(router);
+    ParamsApi.create(router, this.pool);
 
     // wire up the REST API
     this.app.use('/api', router);
