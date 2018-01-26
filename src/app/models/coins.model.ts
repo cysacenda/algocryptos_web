@@ -11,6 +11,7 @@ export interface Coins {
   percent_change_7d: number;
   reddit_subscribers: number;
   timestamp_reddit_subscribers: Date;
+  reddit_agr: String;
 
   subscribers_1d_trend: number;
   subscribers_3d_trend: number;

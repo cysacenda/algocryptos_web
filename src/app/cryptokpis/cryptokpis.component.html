@@ -59,7 +59,7 @@
     <!-- Reddit subscribers column -->
     <ng-container matColumnDef="reddit_subscribers">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.reddit_subscribers}} </mat-cell>
+      <mat-cell *matCellDef="let row"><a target="_blank" [href]="'http://redditmetrics.com/r/' + row.reddit_agr + '/'">{{row.reddit_subscribers}}</a></mat-cell>
     </ng-container>
 
 
