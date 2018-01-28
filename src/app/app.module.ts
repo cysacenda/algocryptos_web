@@ -6,13 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatDialogModule, MatFormField, MatFormFieldModule, MatIconModule, MatInputModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatDividerModule, MatFormField, MatFormFieldModule, MatIconModule,
+  MatInputModule,
   MatListModule,
   MatMenuModule,
   MatPaginatorModule,
   MatSortModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { CryptokpisComponent } from './cryptokpis/cryptokpis.component';
 import { GlobalkpisComponent } from './globalkpis/globalkpis.component';
@@ -49,7 +50,9 @@ import {ProcessesInfosComponent} from './app-processes-infos';
     HttpClientModule,
     MatDialogModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatTooltipModule,
+    MatDividerModule
   ],
   entryComponents: [
     ProcessesInfosComponent

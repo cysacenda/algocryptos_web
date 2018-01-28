@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private processesStatus() {
-    const dialogRef = this.dialog.open(ProcessesInfosComponent);
+    const dialogRef = this.dialog.open(ProcessesInfosComponent, {
+      height: '450px',
+      width: '500px'
+    });
   }
 }

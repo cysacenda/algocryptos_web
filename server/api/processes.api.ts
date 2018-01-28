@@ -12,7 +12,7 @@ export class ProcessesApi {
 
   public list(req: Request, res: Response, next: NextFunction, pool: Pool) {
     let squery: String = '';
-    squery = 'select "IdProcess", "Name", "timestamp"\n';
+    squery = 'select "IdProcess", "Name", "Status", "timestamp"\n';
     squery += 'from process_params\n';
     squery += 'order by timestamp\n';
     pool.query(squery, (err, resp) => {
