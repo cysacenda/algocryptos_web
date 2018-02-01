@@ -2,7 +2,7 @@
 {
   // App Db
   "dbConfig": {
-    "dbAdress": "postgresql://dbuser:algocryptos@localhost:5432/algocryptos"
+    "dbAdress": "postgresql://dbuser:algocryptos@algocryptos.c592sqstvfao.eu-west-3.rds.amazonaws.com:5432/algocryptos"
   },
   "filesPath": {
   }
