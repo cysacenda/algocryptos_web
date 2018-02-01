@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  private processesStatus() {
+  public processesStatus() {
     const dialogRef = this.dialog.open(ProcessesInfosComponent, {
       height: '450px',
       width: '500px'
