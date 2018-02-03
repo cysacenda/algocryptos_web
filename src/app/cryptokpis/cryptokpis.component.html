@@ -64,6 +64,18 @@
       <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_7d)"> {{row.percent_change_7d / 100 | percent:'1.2-2'}} </mat-cell>
     </ng-container>
 
+    <!-- prices_ath_usd Column -->
+    <ng-container matColumnDef="prices_ath_usd">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ATH ($)</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.prices_ath_usd | currency:'USD':'symbol':'1.0-0'}} </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_ath Column -->
+    <ng-container matColumnDef="percent_change_ath">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> %change vs ATH </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_ath)"> {{row.percent_change_ath | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
     <!-- Reddit subscribers column -->
     <ng-container matColumnDef="reddit_subscribers">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Reddit subscribers </mat-header-cell>

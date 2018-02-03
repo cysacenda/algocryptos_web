@@ -9,6 +9,9 @@ export interface Coins {
   percent_change_1h: number;
   percent_change_24h: number;
   percent_change_7d: number;
+  prices_ath_usd: number;
+  percent_change_ath: number;
+  ath_date: Date;
   reddit_subscribers: number;
   timestamp_reddit_subscribers: Date;
   reddit_agr: String;
