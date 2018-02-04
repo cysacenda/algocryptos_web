@@ -19,19 +19,23 @@
     </ng-container>
 
     <!-- CoinName Column -->
-      <ng-container matColumnDef="CoinName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <span matTooltip="CoinMarketCap">
-            <a target="_blank" [href]="'https://coinmarketcap.com/currencies/' + row.namecmc + '/'">{{row.CoinName}}</a>
-          </span>
-        </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="CoinName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <span matTooltip="CoinMarketCap">
+          <a target="_blank" [href]="'https://coinmarketcap.com/currencies/' + row.namecmc + '/'">{{row.CoinName}}</a>
+        </span>
+      </mat-cell>
+    </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="Symbol">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.Symbol}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        <span matTooltip="Subreddit">
+            <a target="_blank" [href]="'https://www.reddit.com/r/' + row.reddit_agr + '/'">{{row.Symbol}}</a>
+        </span>
+      </mat-cell>
     </ng-container>
 
     <!-- price_usd Column -->
@@ -85,8 +89,6 @@
         </span>
       </mat-cell>
     </ng-container>
-
-
 
     <!-- Reddit subscribers 1d trend column -->
     <ng-container matColumnDef="subscribers_1d_trend">
