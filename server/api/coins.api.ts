@@ -60,7 +60,11 @@ export class CoinsApi {
     pool.query(squery, (err, resp) => {
       // console.log(err, resp);
       console.log(squery);
-      res.json(resp['rows']);
+      try {
+        res.json(resp['rows']);
+      } catch (error) {
+        console.log(error);
+      }
       next();
     });
   }
