@@ -1,4 +1,8 @@
-<div *ngIf="processes.length != 0">
+<div *ngIf="!loaded">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>
+
+<div *ngIf="loaded && processes.length != 0">
   <h1>Running processes on server :</h1>
     <mat-list>
       <mat-list-item *ngFor="let process of processes">
@@ -10,6 +14,6 @@
     </mat-list>
 </div>
 
-<div *ngIf="processes.length == 0">
+<div *ngIf="loaded && processes.length == 0">
   <h1>No process running for the moment.</h1>
 </div>

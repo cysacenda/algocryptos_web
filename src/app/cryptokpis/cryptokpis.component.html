@@ -151,3 +151,7 @@
 
   <mat-paginator [pageSizeOptions]="[100, 200, 300, 500]"></mat-paginator>
 </div>
+
+<div *ngIf="coins === undefined">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

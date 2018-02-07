@@ -9,5 +9,10 @@ body {
 
 .app-content {
   padding: 15px;
-  font: 12px noto;
+  font: 10px noto;
+}
+
+.spinner {
+  display:block;
+  margin:0 auto;
 }

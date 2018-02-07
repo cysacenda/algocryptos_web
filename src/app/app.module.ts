@@ -10,7 +10,7 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatPaginatorModule,
+  MatPaginatorModule, MatProgressSpinnerModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule, MatTooltipModule
@@ -54,7 +54,8 @@ import {MissingRedditComponent} from './missingReddit/missingReddit.component';
     MatCardModule,
     MatListModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     ProcessesInfosComponent

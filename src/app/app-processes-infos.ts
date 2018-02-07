@@ -10,13 +10,18 @@ import {ProcessesInfos} from './models/processes-infos.model';
 export class ProcessesInfosComponent implements OnInit {
 
   processes: ProcessesInfos[] = [];
+  loaded: boolean;
 
   constructor(private apiService: ApiService,
               private matDialogRef: MatDialogRef<ProcessesInfosComponent>) {
+    this.loaded = false;
   }
 
   ngOnInit(): void {
     this.apiService.getProcessesInfos()
-      .then(processes => this.processes = processes);
+      .then(processes => {
+        this.processes = processes;
+        this.loaded = true;
+      });
   }
 }
