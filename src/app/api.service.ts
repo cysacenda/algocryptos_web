@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import {Coins} from './models/coins.model';
 import {ProcessesInfos} from "./models/processes-infos.model";
+import {MissingReddit} from './models/missing-reddit.model';
 
 @Injectable()
 export class ApiService {
@@ -14,6 +15,7 @@ export class ApiService {
   // URL to web api
   private coinsUrl: string = this.basicURL + environment.coinsUrl;
   private processesInfosUrl: string = this.basicURL + environment.processesInfosUrl;
+  private missingRedditUrl: string = this.basicURL + environment.missingRedditUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -33,6 +35,16 @@ export class ApiService {
       .toPromise()
       .then((response) => {
         return response as ProcessesInfos[];
+      })
+      .catch(this.handleError);
+  }
+
+  public getMissingReddit(): Promise<Array<MissingReddit>> {
+    return this.http
+      .get(this.missingRedditUrl)
+      .toPromise()
+      .then((response) => {
+        return response as Coins[];
       })
       .catch(this.handleError);
   }

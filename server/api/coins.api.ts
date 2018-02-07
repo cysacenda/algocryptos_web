@@ -16,6 +16,9 @@ export class CoinsApi {
     router.get('/coins/:id([0-9a-f]{24})', (req: Request, res: Response, next: NextFunction) => {
       new CoinsApi().get(req, res, next);
     });
+    router.get('/missingCoins', (req: Request, res: Response, next: NextFunction) => {
+      new CoinsApi().missingRedditCoins(req, res, next, pool);
+    });
 
     // POST
     router.post('/coins', (req: Request, res: Response, next: NextFunction) => {
@@ -65,6 +68,23 @@ export class CoinsApi {
       } catch (error) {
         console.log(error);
       }
+      next();
+    });
+  }
+
+  public missingRedditCoins(req: Request, res: Response, next: NextFunction, pool: Pool) {
+    let squery: String = '';
+    squery += 'SELECT co."IdCryptoCompare", co."Symbol", co."Name", co."CoinName" , sim."Reddit_name" FROM social_infos si\n';
+    squery += 'INNER JOIN coins co ON si."IdCoinCryptoCompare" = co."IdCryptoCompare"\n';
+    squery += 'LEFT JOIN social_infos_manual sim ON sim."IdCoinCryptoCompare" = co."IdCryptoCompare"\n';
+    squery += 'WHERE si."Reddit_name" IS NULL AND sim."Reddit_name" IS NULL;';
+
+
+
+    pool.query(squery, (err, resp) => {
+      console.log(err, resp);
+      console.log(squery);
+      res.json(resp['rows']);
       next();
     });
   }

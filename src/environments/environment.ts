@@ -7,5 +7,6 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000/api/',
   coinsUrl: 'coins',
-  processesInfosUrl: 'processes'
+  processesInfosUrl: 'processes',
+  missingRedditUrl: 'missingCoins'
 };
