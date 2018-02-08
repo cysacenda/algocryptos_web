@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MissingRedditComponent } from './missingReddit.component';
+import { MissingSocialComponent } from './missingSocial.component';
 
-describe('MissingRedditComponent', () => {
-  let component: MissingRedditComponent;
-  let fixture: ComponentFixture<MissingRedditComponent>;
+describe('MissingSocialComponent', () => {
+  let component: MissingSocialComponent;
+  let fixture: ComponentFixture<MissingSocialComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MissingRedditComponent ]
+      declarations: [ MissingSocialComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MissingRedditComponent);
+    fixture = TestBed.createComponent(MissingSocialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

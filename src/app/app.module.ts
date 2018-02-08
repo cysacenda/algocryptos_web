@@ -22,7 +22,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {ApiService} from './api.service';
 import {ProcessesInfosComponent} from './app-processes-infos';
-import {MissingRedditComponent} from './missingReddit/missingReddit.component';
+import {MissingSocialComponent} from './missingSocial/missingSocial.component';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import {MissingRedditComponent} from './missingReddit/missingReddit.component';
     HeaderComponent,
     CryptokpisComponent,
     GlobalkpisComponent,
-    MissingRedditComponent,
+    MissingSocialComponent,
     ProcessesInfosComponent
   ],
   imports: [

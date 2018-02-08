@@ -17,7 +17,7 @@ export class CoinsApi {
       new CoinsApi().get(req, res, next);
     });
     router.get('/missingCoins', (req: Request, res: Response, next: NextFunction) => {
-      new CoinsApi().missingRedditCoins(req, res, next, pool);
+      new CoinsApi().missingSocialCoins(req, res, next, pool);
     });
 
     // POST
@@ -71,7 +71,7 @@ export class CoinsApi {
     });
   }
 
-  public missingRedditCoins(req: Request, res: Response, next: NextFunction, pool: Pool) {
+  public missingSocialCoins(req: Request, res: Response, next: NextFunction, pool: Pool) {
     let squery: String = '';
     squery += 'SELECT co."IdCryptoCompare", co."Symbol", co."Name", co."CoinName" , sim."Reddit_name" FROM social_infos si\n';
     squery += 'INNER JOIN coins co ON si."IdCoinCryptoCompare" = co."IdCryptoCompare"\n';

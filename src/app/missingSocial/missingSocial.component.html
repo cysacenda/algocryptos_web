@@ -1,0 +1,40 @@
+<div class="example-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="IdCryptoCompare">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>IdCryptoCompare</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.IdCryptoCompare}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+          {{row.Name}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="CoinName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>CoinName</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+          {{row.CoinName}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Reddit_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit_name</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field>
+          <input matInput placeholder="{{row.Name}} Subreddit">
+        </mat-form-field>
+
+        <button mat-icon-button>
+          <mat-icon aria-label="Edit Subreddit link">save</mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+</div>

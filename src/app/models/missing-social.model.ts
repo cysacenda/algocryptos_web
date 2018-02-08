@@ -1,4 +1,4 @@
-export interface MissingReddit {
+export interface MissingSocial {
   IdCryptoCompare: number;
   Symbol: String;
   Name: String;

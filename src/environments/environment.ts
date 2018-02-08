@@ -8,5 +8,5 @@ export const environment = {
   apiUrl: 'http://localhost:3000/api/',
   coinsUrl: 'coins',
   processesInfosUrl: 'processes',
-  missingRedditUrl: 'missingCoins'
+  missingSocialUrl: 'missingCoins'
 };
