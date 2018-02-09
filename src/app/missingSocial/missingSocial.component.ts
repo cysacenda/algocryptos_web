@@ -20,6 +20,10 @@ export class MissingSocialComponent implements OnInit, AfterViewInit {
   constructor(private apiService: ApiService, public dialog: MatDialog) {
   }
 
+  updateSubreddit(idCryptoCompare, subredditName): void {
+    alert(idCryptoCompare + ' ' + subredditName);
+  }
+
 
   ngOnInit() {
     this.apiService.getMissingSocial()

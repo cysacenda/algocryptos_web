@@ -19,19 +19,22 @@
           {{row.CoinName}}
       </mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="Reddit_name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit_name</mat-header-cell>
       <mat-cell *matCellDef="let row">
+
         <mat-form-field>
-          <input matInput placeholder="{{row.Name}} Subreddit">
+          <input matInput placeholder="{{row.Name}} Subreddit" [(ngModel)]="row.Reddit_name">
         </mat-form-field>
 
-        <button mat-icon-button>
+        <button mat-icon-button (click)="updateSubreddit(row.IdCryptoCompare, row.Reddit_name)">
           <mat-icon aria-label="Edit Subreddit link">save</mat-icon>
         </button>
 
       </mat-cell>
     </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">
     </mat-row>

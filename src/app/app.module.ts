@@ -23,6 +23,7 @@ import {CommonModule} from '@angular/common';
 import {ApiService} from './api.service';
 import {ProcessesInfosComponent} from './app-processes-infos';
 import {MissingSocialComponent} from './missingSocial/missingSocial.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {MissingSocialComponent} from './missingSocial/missingSocial.component';
     MatListModule,
     MatTooltipModule,
     MatDividerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FormsModule
   ],
   entryComponents: [
     ProcessesInfosComponent

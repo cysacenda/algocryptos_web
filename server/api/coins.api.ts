@@ -24,14 +24,38 @@ export class CoinsApi {
     router.post('/coins', (req: Request, res: Response, next: NextFunction) => {
       new CoinsApi().create(req, res, next);
     });
+    router.post('/missingCoins', (req: Request, res: Response, next: NextFunction) => {
+      new CoinsApi().createSubreddit(req, res, next, pool);
+    });
 
     // PUT
     router.put('/coins/:id([0-9a-f]{24})', (req: Request, res: Response, next: NextFunction) => {
       new CoinsApi().update(req, res, next);
     });
+
   }
 
   public create(req: Request, res: Response, next: NextFunction) {
+  }
+
+  public createSubreddit(req: Request, res: Response, next: NextFunction, pool: Pool) {
+    let idCryptoCompare: string = req.body.IdCryptoCompare;
+    let redditName: string = req.body.Reddit_name;
+
+    let squery: String = '';
+    squery += 'INSERT INTO social_infos_manual(\n';
+    squery += '"IdCoinCryptoCompare", "Reddit_name")\n';
+    squery += 'VALUES (' + idCryptoCompare + ', \'' + redditName + '\');';
+
+    console.log(squery)
+    res.json({missingCoins: 'Dans createSubreddit'});
+
+    pool.query(squery, (err, resp) => {
+      console.log(err, resp);
+      console.log(squery);
+      res.json(resp['rows']);
+      next();
+    });
   }
 
   public delete(req: Request, res: Response, next: NextFunction) {
