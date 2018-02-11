@@ -16,3 +16,14 @@ body {
   display:block;
   margin:0 auto;
 }
+
+.page-component {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.page-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
