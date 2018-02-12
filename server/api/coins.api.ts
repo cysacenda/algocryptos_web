@@ -39,22 +39,18 @@ export class CoinsApi {
   }
 
   public createSubreddit(req: Request, res: Response, next: NextFunction, pool: Pool) {
-    let idCryptoCompare: string = req.body.IdCryptoCompare;
-    let redditName: string = req.body.Reddit_name;
+    const idCoinCryptoCompare: string = req.body.IdCoinCryptoCompare;
+    const redditName: string = req.body.Reddit_name;
 
-    let squery: String = '';
-    squery += 'INSERT INTO social_infos_manual(\n';
-    squery += '"IdCoinCryptoCompare", "Reddit_name")\n';
-    squery += 'VALUES (' + idCryptoCompare + ', \'' + redditName + '\');';
+    const text = 'INSERT INTO social_infos_manual("IdCoinCryptoCompare", "Reddit_name") VALUES($1, $2) RETURNING *';
+    const values = [idCoinCryptoCompare, redditName];
 
-    console.log(squery)
-    res.json({missingCoins: 'Dans createSubreddit'});
-
-    pool.query(squery, (err, resp) => {
-      console.log(err, resp);
-      console.log(squery);
-      res.json(resp['rows']);
-      next();
+    pool.query(text, values, (err, response) => {
+      if (err) {
+        res.json({Error: 'createSubreddit API'});
+      } else {
+        res.json(response.rows[0]);
+      }
     });
   }
 
@@ -106,7 +102,6 @@ export class CoinsApi {
 
     pool.query(squery, (err, resp) => {
       console.log(err, resp);
-      console.log(squery);
       res.json(resp['rows']);
       next();
     });
