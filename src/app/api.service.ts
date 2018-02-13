@@ -49,6 +49,16 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  public setMissingSocialReddit(bodyData): Promise<any> {
+    return this.http
+      .post(this.missingSocialUrl, JSON.stringify(bodyData), {headers:{'Content-Type': 'application/json'}})
+      .toPromise()
+      .then((response) => {
+        return response;
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);

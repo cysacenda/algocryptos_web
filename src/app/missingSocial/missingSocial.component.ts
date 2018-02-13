@@ -22,6 +22,14 @@ export class MissingSocialComponent implements OnInit, AfterViewInit {
 
   updateSubreddit(idCryptoCompare, subredditName): void {
     alert(idCryptoCompare + ' ' + subredditName);
+
+    const myObj = {
+      IdCoinCryptoCompare: idCryptoCompare,
+      Reddit_name: subredditName
+    };
+  /*
+    this.apiService.setMissingSocialReddit(myObj)
+      .then(response => response.json().data);*/
   }
 
 
