@@ -1,19 +1,49 @@
-<div *ngIf="!loaded">
+<div *ngIf="!(running_loaded && error_loaded && success_loaded)">
   <mat-spinner class="spinner"></mat-spinner>
 </div>
 
-<div *ngIf="loaded && processes.length != 0">
-  <h1>Running processes on server :</h1>
+<mat-card>
+  <div *ngIf="running_loaded && runningProcesses.length != 0">
+    <h2>Running processes on server :</h2>
+      <mat-list>
+        <mat-list-item *ngFor="let process of runningProcesses">
+            <mat-icon mat-list-icon>{{process.Status == 'RUNNING' ? 'play_arrow' : 'pause'}}</mat-icon>
+            <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
+            <p mat-line> {{process.Status}} </p>
+          <p mat-line> {{(process.timestamp | date:'short')}} </p>
+        </mat-list-item>
+      </mat-list>
+  </div>
+
+  <div *ngIf="running_loaded && runningProcesses.length == 0">
+    <h2>No process running for the moment.</h2>
+  </div>
+</mat-card>
+
+<mat-card>
+  <div *ngIf="success_loaded && successProcesses.length != 0">
+    <h2>Last successfull processes :</h2>
     <mat-list>
-      <mat-list-item *ngFor="let process of processes">
-          <mat-icon mat-list-icon>{{process.Status == 'RUNNING' ? 'play_arrow' : 'pause'}}</mat-icon>
-          <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
-          <p mat-line> {{process.Status}} </p>
+      <mat-list-item *ngFor="let process of successProcesses">
+        <mat-icon mat-list-icon>done</mat-icon>
+        <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
+        <p mat-line> {{process.Status}} </p>
         <p mat-line> {{(process.timestamp | date:'short')}} </p>
       </mat-list-item>
     </mat-list>
-</div>
+  </div>
+</mat-card>
 
-<div *ngIf="loaded && processes.length == 0">
-  <h1>No process running for the moment.</h1>
-</div>
+<mat-card>
+  <div *ngIf="error_loaded && errorProcesses.length != 0">
+    <h2>Last processes in error :</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let process of errorProcesses">
+        <mat-icon mat-list-icon>error</mat-icon>
+        <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
+        <p mat-line> {{process.Status}} </p>
+        <p mat-line> {{(process.timestamp | date:'short')}} </p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</mat-card>

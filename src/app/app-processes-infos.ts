@@ -9,19 +9,35 @@ import {ProcessesInfos} from './models/processes-infos.model';
 })
 export class ProcessesInfosComponent implements OnInit {
 
-  processes: ProcessesInfos[] = [];
-  loaded: boolean;
+  runningProcesses: ProcessesInfos[] = [];
+  successProcesses: ProcessesInfos[] = [];
+  errorProcesses: ProcessesInfos[] = [];
+  running_loaded: boolean;
+  error_loaded: boolean;
+  success_loaded: boolean;
 
   constructor(private apiService: ApiService,
               private matDialogRef: MatDialogRef<ProcessesInfosComponent>) {
-    this.loaded = false;
+    this.running_loaded = false;
   }
 
   ngOnInit(): void {
     this.apiService.getProcessesInfos()
       .then(processes => {
-        this.processes = processes;
-        this.loaded = true;
+        this.runningProcesses = processes;
+        this.running_loaded = true;
+      });
+
+    this.apiService.getProcessesInfos('/SUCCESS')
+      .then(processes => {
+        this.successProcesses = processes;
+        this.success_loaded = true;
+      });
+
+    this.apiService.getProcessesInfos('/ERROR')
+      .then(processes => {
+        this.errorProcesses = processes;
+        this.error_loaded = true;
       });
   }
 }

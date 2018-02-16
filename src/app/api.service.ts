@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import {Coins} from './models/coins.model';
-import {ProcessesInfos} from "./models/processes-infos.model";
+import {ProcessesInfos} from './models/processes-infos.model';
 import {MissingSocial} from './models/missing-social.model';
 
 @Injectable()
@@ -29,9 +29,9 @@ export class ApiService {
       .catch(this.handleError);
   }
 
-  public getProcessesInfos(): Promise<Array<ProcessesInfos>> {
+  public getProcessesInfos(status= ''): Promise<Array<ProcessesInfos>> {
     return this.http
-      .get(this.processesInfosUrl)
+      .get(this.processesInfosUrl + status)
       .toPromise()
       .then((response) => {
         return response as ProcessesInfos[];
