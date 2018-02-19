@@ -21,15 +21,30 @@ export class MissingSocialComponent implements OnInit, AfterViewInit {
   }
 
   updateSubreddit(idCryptoCompare, subredditName): void {
-    alert(idCryptoCompare + ' ' + subredditName);
 
-    const myObj = {
-      IdCoinCryptoCompare: idCryptoCompare,
-      Reddit_name: subredditName
-    };
-  /*
-    this.apiService.setMissingSocialReddit(myObj)
-      .then(response => response.json().data);*/
+    if (subredditName != null && idCryptoCompare != null) {
+      const bodyData = {
+        IdCoinCryptoCompare: idCryptoCompare,
+        Reddit_name: subredditName
+      };
+
+      this.apiService.setMissingSocialReddit(bodyData)
+        .then(response => {
+          if (response.IdCoinCryptoCompare === idCryptoCompare) {
+            alert(response.Reddit_name + ' has been added');
+          }
+          // alert(subredditName + ' has been added');
+          this.apiService.getMissingSocial()
+            .then(missingSocial => {
+              this.missingSocial = missingSocial;
+              this.dataSource = new MatTableDataSource<MissingSocial>(this.missingSocial);
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+            });
+        });
+    } else {
+      alert('Subreddit is empty');
+    }
   }
 
 
