@@ -70,7 +70,7 @@ export class CryptokpisComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue;
   }
 
-  setColor(percent: number) : string {
+  setColor(percent: number): string {
     return percent >= 0 ? 'LimeGreen' : 'Red';
   }
 }
