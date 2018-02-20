@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { Ui.ActionsService } from './ui.actions.service';
+import { UIActionsService } from './ui.actions.service';
 
 describe('Ui.ActionsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [Ui.ActionsService]
+      providers: [UIActionsService]
     });
   });
 
-  it('should be created', inject([Ui.ActionsService], (service: Ui.ActionsService) => {
+  it('should be created', inject([UIActionsService], (service: UIActionsService) => {
     expect(service).toBeTruthy();
   }));
 });
