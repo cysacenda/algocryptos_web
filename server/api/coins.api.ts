@@ -81,7 +81,6 @@ export class CoinsApi {
     squery += 'kp.subscribers_30d_trend, kp.subscribers_60d_trend, kp.subscribers_90d_trend, reddit_agr, ath.prices_ath_usd, ath.ath_date\n';
     squery += 'order by market_cap_usd desc\n';
     pool.query(squery, (err, resp) => {
-      console.log(err, resp);
       try {
         res.json(resp['rows']);
       } catch (error) {

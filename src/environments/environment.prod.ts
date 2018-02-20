@@ -3,5 +3,6 @@ export const environment = {
   apiUrl: 'https://d34xbsgnyo3jm0.cloudfront.net/api/',
   coinsUrl: 'coins',
   processesInfosUrl: 'processes',
-  missingSocialUrl: 'missingCoins'
+  missingSocialUrl: 'missingCoins',
+  globaldataUrl: 'globaldata'
 };

@@ -5,10 +5,17 @@
     </button>
   </span>
 
-  <h1 class="md-title text-center">AlgoCryptos</h1>
+  <h1 class="md-title text-center">AlgoCryptos - </h1>
 
   <!-- This fills the remaining space of the current row -->
   <span class="app-toolbar-filler"></span>
+
+  <span *ngIf="this.globaldata!= null">
+    <mat-chip-list>
+      <mat-chip>GMC : {{this.globaldata.total_market_cap_usd.toFixed(0)}}b$</mat-chip>
+      <mat-chip>24h vol : {{this.globaldata.total_24h_volume_usd.toFixed(0)}}b$</mat-chip>
+    </mat-chip-list>
+  </span>
 
   <span>
     <button mat-button (click)="processesStatus()">

@@ -8,6 +8,7 @@ import errorHandler = require('errorhandler');
 import { Pool, Client } from 'pg';
 import {ParamsApi} from "./api/params.api";
 import {ProcessesApi} from "./api/processes.api";
+import {GlobaldataApi} from "./api/globaldata.api";
 
 /**
  * The server.
@@ -86,6 +87,7 @@ export class Server {
     CoinsApi.create(router, this.pool);
     ParamsApi.create(router, this.pool);
     ProcessesApi.create(router, this.pool);
+    GlobaldataApi.create(router, this.pool);
 
     // wire up the REST API
     this.app.use('/api', router);

@@ -6,7 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatDialogModule, MatDividerModule, MatFormField, MatFormFieldModule, MatIconModule,
+  MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatDividerModule, MatFormField, MatFormFieldModule,
+  MatIconModule,
   MatInputModule,
   MatListModule,
   MatMenuModule,
@@ -57,7 +58,8 @@ import {FormsModule} from '@angular/forms';
     MatTooltipModule,
     MatDividerModule,
     MatProgressSpinnerModule,
-    FormsModule
+    MatChipsModule,
+    FormsModule,
   ],
   entryComponents: [
     ProcessesInfosComponent

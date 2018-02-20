@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatTableDataSource} from '@angular/material';
 import {ProcessesInfosComponent} from '../app-processes-infos';
+import {ApiService} from "../api.service";
+import {Coins} from "../models/coins.model";
+import {Globaldata} from "../models/globaldata.model";
 
 @Component({
   selector: 'app-header',
@@ -8,10 +11,15 @@ import {ProcessesInfosComponent} from '../app-processes-infos';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  globaldata: Globaldata;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private apiService: ApiService) { }
 
   ngOnInit() {
+    this.apiService.getGlobalData()
+      .then(globaldata => {
+        this.globaldata = globaldata;
+      });
   }
 
   public processesStatus() {

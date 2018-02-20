@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import {Coins} from './models/coins.model';
 import {ProcessesInfos} from './models/processes-infos.model';
 import {MissingSocial} from './models/missing-social.model';
+import {Globaldata} from "./models/globaldata.model";
 
 @Injectable()
 export class ApiService {
@@ -16,6 +17,7 @@ export class ApiService {
   private coinsUrl: string = this.basicURL + environment.coinsUrl;
   private processesInfosUrl: string = this.basicURL + environment.processesInfosUrl;
   private missingSocialUrl: string = this.basicURL + environment.missingSocialUrl;
+  private globaldataUrl: string = this.basicURL + environment.globaldataUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -55,6 +57,16 @@ export class ApiService {
       .toPromise()
       .then((response) => {
         return response;
+      })
+      .catch(this.handleError);
+  }
+
+  public getGlobalData(): Promise<Globaldata> {
+    return this.http
+      .get(this.globaldataUrl)
+      .toPromise()
+      .then((response) => {
+        return (response)[0] as Globaldata;
       })
       .catch(this.handleError);
   }
