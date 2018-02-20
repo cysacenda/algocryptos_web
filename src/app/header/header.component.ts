@@ -16,6 +16,10 @@ export class HeaderComponent implements OnInit {
   constructor(public dialog: MatDialog, private apiService: ApiService, private uiActionsService: UIActionsService) { }
 
   ngOnInit() {
+    this.loadGlobalData();
+  }
+
+  loadGlobalData() {
     this.apiService.getGlobalData()
       .then(globaldata => {
         this.globaldata = globaldata;
@@ -31,5 +35,6 @@ export class HeaderComponent implements OnInit {
 
   refreshData() {
     this.uiActionsService.actionTriggered(HeaderAction.Refresh);
+    this.loadGlobalData();
   }
 }
