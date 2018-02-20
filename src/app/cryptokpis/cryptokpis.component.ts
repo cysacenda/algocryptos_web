@@ -3,6 +3,8 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {ApiService} from '../api.service';
 import {Coins} from '../models/coins.model';
 import { CurrencyPipe } from '@angular/common';
+import {HeaderAction, UIActionsService} from '../ui.actions.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-cryptokpis',
@@ -15,13 +17,34 @@ export class CryptokpisComponent implements OnInit, AfterViewInit {
 
   dataSource: MatTableDataSource<Coins>;
 
+  HeaderSubscription: Subscription;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private uiActionsService: UIActionsService) {
+    this.HeaderSubscription = uiActionsService.actionTriggered$.subscribe(
+      action => {
+        this.headerAction(action);
+      }
+    );
   }
 
   ngOnInit() {
+    this.getCoins();
+  }
+
+  headerAction(action) {
+    if (action === HeaderAction.Refresh) {
+      if (this.coins != null) {
+        this.dataSource = null;
+        this.coins = undefined;
+      }
+      this.getCoins();
+    }
+  }
+
+  getCoins() {
     this.apiService.getCoins()
       .then(coins => {
         this.coins = coins;

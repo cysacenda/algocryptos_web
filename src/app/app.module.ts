@@ -25,6 +25,7 @@ import {ApiService} from './api.service';
 import {ProcessesInfosComponent} from './app-processes-infos';
 import {MissingSocialComponent} from './missingSocial/missingSocial.component';
 import {FormsModule} from '@angular/forms';
+import {UIActionsService} from './ui.actions.service';
 
 
 @NgModule({
@@ -67,7 +68,7 @@ import {FormsModule} from '@angular/forms';
   exports: [
     ProcessesInfosComponent
   ],
-  providers: [ApiService, MatDialogModule],
+  providers: [ApiService, MatDialogModule, UIActionsService],
   bootstrap: [AppComponent]
 })
 
