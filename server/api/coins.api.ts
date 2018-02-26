@@ -64,10 +64,11 @@ export class CoinsApi {
   public list(req: Request, res: Response, next: NextFunction, pool: Pool) {
     let squery: String = '';
     squery = 'select co."IdCryptoCompare", co."CoinName", co."Symbol", pr.price_usd, pr.market_cap_usd, pr.rank, replace(pr."Name", \' \', \'-\') as NameCMC, pr.percent_change_1h,\n';
-    squery += 'pr.percent_change_24h, pr.percent_change_7d, max(sr."Reddit_subscribers") as reddit_subscribers, max(sr.timestamp) as timestamp_reddit_subscribers,\n';
+    squery += 'pr.percent_change_24h, pr.percent_change_7d, sr."Reddit_subscribers", sr.timestamp as timestamp_reddit_subscribers,\n';
     squery += 'kp.subscribers_1d_trend, kp.subscribers_3d_trend, kp.subscribers_7d_trend, kp.subscribers_15d_trend, kp.subscribers_30d_trend, kp.subscribers_60d_trend,\n';
-    squery += 'kp.subscribers_90d_trend, max(kp."timestamp") as timestamp_reddit_trend,\n';
+    squery += 'kp.subscribers_90d_trend, kp."timestamp" as timestamp_reddit_trend,\n';
     squery += 'CASE WHEN sm."Reddit_name" IS NULL THEN si."Reddit_name" ELSE sm."Reddit_name" END AS reddit_agr,\n';
+    squery += 'kv.volume_mean_last_1h_vs_30d, kv.volume_mean_last_3h_30d, kv.volume_mean_last_6h_30d, kv.volume_mean_last_12h_30d, kv.volume_mean_last_24h_30d, kv.volume_mean_last_3d_30d, kv.volume_mean_last_7d_30d, kv.timestamp as timestamp_volumes\n';
     squery += 'ath.prices_ath_usd, ath.ath_date, (pr.price_usd - ath.prices_ath_usd) / ath.prices_ath_usd as percent_change_ath\n';
     squery += 'from coins as co\n';
     squery += 'inner join prices as pr on (co."IdCryptoCompare" = pr."IdCryptoCompare")\n';
@@ -76,10 +77,9 @@ export class CoinsApi {
     squery += 'left outer join social_infos_manual sm on (sm."IdCoinCryptoCompare" = co."IdCryptoCompare")\n';
     squery += 'left outer join social_stats_reddit sr on (sr."IdCoinCryptoCompare" = co."IdCryptoCompare")\n';
     squery += 'left outer join kpi_reddit_subscribers kp on (kp."IdCryptoCompare" = co."IdCryptoCompare")\n';
-    squery += 'group by co."IdCryptoCompare", co."CoinName", co."Symbol", pr.price_usd, pr.market_cap_usd, pr.rank, NameCMC, pr.percent_change_1h,\n';
-    squery += 'pr.percent_change_24h, pr.percent_change_7d,kp.subscribers_1d_trend, kp.subscribers_3d_trend, kp.subscribers_7d_trend, kp.subscribers_15d_trend,\n';
-    squery += 'kp.subscribers_30d_trend, kp.subscribers_60d_trend, kp.subscribers_90d_trend, reddit_agr, ath.prices_ath_usd, ath.ath_date\n';
+    squery += 'left outer join kpi_market_volumes kv on (kv."IdCoinCryptoCompare" = co."IdCryptoCompare")\n';
     squery += 'order by market_cap_usd desc\n';
+    console.log(squery);
     pool.query(squery, (err, resp) => {
       try {
         res.json(resp['rows']);

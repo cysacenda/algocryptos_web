@@ -69,25 +69,30 @@
     </ng-container>
 
     <!-- prices_ath_usd Column -->
-    <ng-container matColumnDef="prices_ath_usd">
+    <!--<ng-container matColumnDef="prices_ath_usd">
       <mat-header-cell *matHeaderCellDef mat-sort-header>ATH</mat-header-cell>
       <mat-cell *matCellDef="let row">
           {{row.prices_ath_usd | currency:'USD':'symbol':'1.2-2'}}
       </mat-cell>
-    </ng-container>
+    </ng-container>-->
 
     <!-- ath_date Column -->
-    <ng-container matColumnDef="ath_date">
+    <!-- <ng-container matColumnDef="ath_date">
       <mat-header-cell *matHeaderCellDef mat-sort-header>ATH date</mat-header-cell>
       <mat-cell *matCellDef="let row">
         {{row.ath_date | date:'dd/MM/yyyy'}}
       </mat-cell>
-    </ng-container>
+    </ng-container>-->
 
     <!-- percent_change_ath Column -->
     <ng-container matColumnDef="percent_change_ath">
       <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs ATH</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_ath)"> {{row.percent_change_ath | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_ath)">
+        <span matTooltip="{{ (row.prices_ath_usd | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.ath_date | date:'dd/MM/yyyy')}}">
+            {{row.percent_change_ath | percent:'1.2-2'}}
+        </span>
+
+      </mat-cell>
     </ng-container>
 
     <!-- Reddit subscribers column -->
@@ -142,6 +147,48 @@
       <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_90d_trend)"> {{row.subscribers_90d_trend | percent:'1.2-2'}} </mat-cell>
     </ng-container>
 
+    <!-- TODO : 24h volumes -->
+    <!-- Kpi volumes mean 1h/30d -->
+    <ng-container matColumnDef="volume_mean_last_1h_vs_30d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 1h/30d</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_1h_vs_30d)"> {{row.volume_mean_last_1h_vs_30d | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Kpi volumes mean 3h/30d -->
+    <ng-container matColumnDef="volume_mean_last_3h_30d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 3h/30d</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_3h_30d)"> {{row.volume_mean_last_3h_30d | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Kpi volumes mean 6h/30d -->
+    <ng-container matColumnDef="volume_mean_last_6h_30d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 6h/30d</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_6h_30d)"> {{row.volume_mean_last_6h_30d | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Kpi volumes mean 12h/30d -->
+    <ng-container matColumnDef="volume_mean_last_12h_30d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 12h/30d</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_12h_30d)"> {{row.volume_mean_last_12h_30d | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Kpi volumes mean 24h/30d -->
+    <ng-container matColumnDef="volume_mean_last_24h_30d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 24h/30d</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_24h_30d)"> {{row.volume_mean_last_24h_30d | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Kpi volumes mean 3d/30d -->
+    <ng-container matColumnDef="volume_mean_last_3d_30d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 3d/30d</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_3d_30d)"> {{row.volume_mean_last_3d_30d | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <!-- Kpi volumes mean 7d/30d -->
+    <ng-container matColumnDef="volume_mean_last_7d_30d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 7d/30d</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_7d_30d)"> {{row.volume_mean_last_7d_30d | percent:'1.2-2'}} </mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;">

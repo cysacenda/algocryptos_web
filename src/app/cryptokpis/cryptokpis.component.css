@@ -6,3 +6,9 @@
 .mat-table {
   overflow: auto;
 }
+
+/* permet d'avoir un tableau qui dépasse de la page
+.mat-header-row, .mat-row {
+  min-width: 3000px;
+}
+*/

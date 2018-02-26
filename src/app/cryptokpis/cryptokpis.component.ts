@@ -13,7 +13,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class CryptokpisComponent implements OnInit, AfterViewInit {
   coins: Coins [];
-  displayedColumns = ['rank', 'CoinName', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h', 'percent_change_24h', 'percent_change_7d', 'prices_ath_usd', 'ath_date', 'percent_change_ath', 'reddit_subscribers', 'subscribers_1d_trend',  'subscribers_3d_trend', 'subscribers_7d_trend', 'subscribers_15d_trend', 'subscribers_30d_trend', 'subscribers_60d_trend', 'subscribers_90d_trend'];
+  displayedColumns = ['rank', 'CoinName', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h', 'percent_change_24h', 'percent_change_7d', 'percent_change_ath', 'reddit_subscribers', 'subscribers_1d_trend',  'subscribers_3d_trend', 'subscribers_7d_trend', 'subscribers_15d_trend', 'subscribers_30d_trend', 'subscribers_60d_trend', 'subscribers_90d_trend', 'volume_mean_last_1h_vs_30d', 'volume_mean_last_3h_30d', 'volume_mean_last_6h_30d', 'volume_mean_last_12h_30d', 'volume_mean_last_24h_30d', 'volume_mean_last_3d_30d', 'volume_mean_last_7d_30d'];
 
   dataSource: MatTableDataSource<Coins>;
 
