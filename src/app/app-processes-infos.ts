@@ -40,4 +40,19 @@ export class ProcessesInfosComponent implements OnInit {
         this.error_loaded = true;
       });
   }
+
+  getTimeAgo(timestamp: string): string {
+    var timeAgo: string;
+    var processDate = new Date(timestamp);
+    var now  = new Date();
+    var durationMinuts = Math.round((now.getTime() - processDate.getTime()) / 1000 / 60);
+    if(durationMinuts > 60 * 24) {
+      timeAgo = '(' + Math.round(durationMinuts / 60 / 24).toString() + 'day(s) ago)';
+    } else if(durationMinuts > 60) {
+      timeAgo = '(' + Math.round(durationMinuts / 60).toString() + 'hour(s) ago)';
+    } else {
+      timeAgo = '(' + Math.round(durationMinuts).toString() + 'minute(s) ago)';
+    }
+    return timeAgo;
+  }
 }

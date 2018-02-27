@@ -8,9 +8,10 @@
       <mat-list>
         <mat-list-item *ngFor="let process of runningProcesses">
             <mat-icon mat-list-icon>{{process.Status == 'RUNNING' ? 'play_arrow' : 'pause'}}</mat-icon>
-            <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
+          <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
+          <p mat-line> {{process.Description}} </p>
             <p mat-line> {{process.Status}} </p>
-          <p mat-line> {{(process.timestamp | date:'short')}} </p>
+          <p mat-line> {{(process.timestamp | date:'short') + ' ' + this.getTimeAgo(process.timestamp)}} </p>
         </mat-list-item>
       </mat-list>
   </div>
@@ -22,16 +23,17 @@
 
 <mat-card>
   <div *ngIf="success_loaded && successProcesses.length != 0">
-    <h2>Last successfull processes :</h2>
-    <mat-list>
-      <mat-list-item *ngFor="let process of successProcesses">
-        <mat-icon mat-list-icon>done</mat-icon>
-        <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
-        <p mat-line> {{process.Status}} </p>
-        <p mat-line> {{(process.timestamp | date:'short')}} </p>
-      </mat-list-item>
-    </mat-list>
-  </div>
+  <h2>Last successful processes :</h2>
+  <mat-list>
+    <mat-list-item *ngFor="let process of successProcesses">
+      <mat-icon mat-list-icon>done</mat-icon>
+      <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
+      <p mat-line> {{process.Description}} </p>
+      <p mat-line> {{process.Status}} </p>
+      <p mat-line> {{(process.timestamp | date:'short') + ' ' + this.getTimeAgo(process.timestamp)}} </p>
+    </mat-list-item>
+  </mat-list>
+</div>
 </mat-card>
 
 <mat-card>
@@ -41,8 +43,9 @@
       <mat-list-item *ngFor="let process of errorProcesses">
         <mat-icon mat-list-icon>error</mat-icon>
         <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
+        <p mat-line> {{process.Description}} </p>
         <p mat-line> {{process.Status}} </p>
-        <p mat-line> {{(process.timestamp | date:'short')}} </p>
+        <p mat-line> {{(process.timestamp | date:'short') + ' ' + this.getTimeAgo(process.timestamp)}} </p>
       </mat-list-item>
     </mat-list>
   </div>

@@ -37,12 +37,14 @@ export class ProcessesApi {
     const status: string = req.params[PARAM_ID];
 
     let squery: String = '';
-    squery = 'select "IdProcess", "Name", max(timestamp) as timestamp\n';
-    squery += 'from process_params_histo\n';
+    squery = 'select pph."IdProcess", pph."Name", pd."Description", max(pph.timestamp) as timestamp\n';
+    squery += 'from process_params_histo pph\n';
+    squery += 'left outer join process_description pd on (pd."Name" = pph."Name")\n';
     squery += 'where "Status" = \'' + status + '\'\n';
-    squery += 'group by "IdProcess", "Name"\n';
+    squery += 'group by "IdProcess", pph."Name", pd."Description"\n';
     squery += 'order by timestamp desc\n';
-    squery += 'limit 10\n';
+    squery += 'limit 12\n';
+    console.log(squery);
     pool.query(squery, (err, resp) => {
       res.json(resp['rows']);
       next();

@@ -68,22 +68,6 @@
       <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_7d)"> {{row.percent_change_7d / 100 | percent:'1.2-2'}} </mat-cell>
     </ng-container>
 
-    <!-- prices_ath_usd Column -->
-    <!--<ng-container matColumnDef="prices_ath_usd">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>ATH</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-          {{row.prices_ath_usd | currency:'USD':'symbol':'1.2-2'}}
-      </mat-cell>
-    </ng-container>-->
-
-    <!-- ath_date Column -->
-    <!-- <ng-container matColumnDef="ath_date">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>ATH date</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        {{row.ath_date | date:'dd/MM/yyyy'}}
-      </mat-cell>
-    </ng-container>-->
-
     <!-- percent_change_ath Column -->
     <ng-container matColumnDef="percent_change_ath">
       <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs ATH</mat-header-cell>
