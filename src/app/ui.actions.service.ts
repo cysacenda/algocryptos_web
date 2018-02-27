@@ -17,5 +17,6 @@ export class UIActionsService {
 }
 
 export enum HeaderAction {
-  Refresh
+  Refresh,
+  Alerts
 }

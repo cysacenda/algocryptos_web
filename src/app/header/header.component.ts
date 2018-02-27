@@ -37,4 +37,8 @@ export class HeaderComponent implements OnInit {
     this.uiActionsService.actionTriggered(HeaderAction.Refresh);
     this.loadGlobalData();
   }
+
+  showAlerts() {
+    this.uiActionsService.actionTriggered(HeaderAction.Alerts);
+  }
 }

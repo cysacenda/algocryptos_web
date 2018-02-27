@@ -41,6 +41,8 @@ export class CryptokpisComponent implements OnInit, AfterViewInit {
         this.coins = undefined;
       }
       this.getCoins();
+    } else if(action === HeaderAction.Alerts) {
+        // TODO
     }
   }
 
