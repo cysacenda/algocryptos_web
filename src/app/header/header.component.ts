@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatTableDataSource} from '@angular/material';
-import {ProcessesInfosComponent} from '../app-processes-infos';
+import {ProcessesInfosComponent} from '../processinfos/app-processes-infos';
 import {ApiService} from '../api.service';
 import {Globaldata} from '../models/globaldata.model';
 import {HeaderAction, UIActionsService} from '../ui.actions.service';

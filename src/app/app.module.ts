@@ -7,11 +7,12 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatDividerModule, MatFormField, MatFormFieldModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatPaginatorModule, MatProgressSpinnerModule,
+  MatPaginatorModule, MatProgressSpinnerModule, MatSlider, MatSlideToggleModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule, MatTooltipModule
@@ -22,10 +23,11 @@ import {HeaderComponent} from './header/header.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {ApiService} from './api.service';
-import {ProcessesInfosComponent} from './app-processes-infos';
+import {ProcessesInfosComponent} from './processinfos/app-processes-infos';
 import {MissingSocialComponent} from './missingSocial/missingSocial.component';
 import {FormsModule} from '@angular/forms';
 import {UIActionsService} from './ui.actions.service';
+import {ColumnsChooserComponent} from './columns-chooser/columns-chooser.component';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import {UIActionsService} from './ui.actions.service';
     CryptokpisComponent,
     GlobalkpisComponent,
     MissingSocialComponent,
-    ProcessesInfosComponent
+    ProcessesInfosComponent,
+    ColumnsChooserComponent
   ],
   imports: [
     CommonModule,
@@ -61,12 +64,14 @@ import {UIActionsService} from './ui.actions.service';
     MatProgressSpinnerModule,
     MatChipsModule,
     FormsModule,
+    MatSlideToggleModule,
+    MatGridListModule
   ],
   entryComponents: [
-    ProcessesInfosComponent
+    ProcessesInfosComponent, ColumnsChooserComponent
   ],
   exports: [
-    ProcessesInfosComponent
+    ProcessesInfosComponent, ColumnsChooserComponent
   ],
   providers: [ApiService, MatDialogModule, UIActionsService],
   bootstrap: [AppComponent]

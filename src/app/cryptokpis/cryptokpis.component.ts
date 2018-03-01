@@ -1,10 +1,12 @@
 import {Component, ViewChild, OnInit, AfterViewInit} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {ApiService} from '../api.service';
 import {Coins} from '../models/coins.model';
 import { CurrencyPipe } from '@angular/common';
 import {HeaderAction, UIActionsService} from '../ui.actions.service';
 import {Subscription} from 'rxjs/Subscription';
+import {ProcessesInfosComponent} from "../processinfos/app-processes-infos";
+import {ColumnsChooserComponent} from "../columns-chooser/columns-chooser.component";
 
 @Component({
   selector: 'app-cryptokpis',
@@ -13,7 +15,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class CryptokpisComponent implements OnInit, AfterViewInit {
   coins: Coins [];
-  displayedColumns = ['rank', 'CoinName', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h', 'percent_change_24h', 'percent_change_7d', 'percent_change_ath', 'reddit_subscribers', 'subscribers_1d_trend',  'subscribers_3d_trend', 'subscribers_7d_trend', 'subscribers_15d_trend', 'subscribers_30d_trend', 'subscribers_60d_trend', 'subscribers_90d_trend', 'volume_mean_last_1h_vs_30d', 'volume_mean_last_3h_30d', 'volume_mean_last_6h_30d', 'volume_mean_last_12h_30d', 'volume_mean_last_24h_30d', 'volume_mean_last_3d_30d', 'volume_mean_last_7d_30d'];
+  displayedColumns = [];
 
   dataSource: MatTableDataSource<Coins>;
 
@@ -22,7 +24,7 @@ export class CryptokpisComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private apiService: ApiService, private uiActionsService: UIActionsService) {
+  constructor(private apiService: ApiService, private uiActionsService: UIActionsService, public dialog: MatDialog,) {
     this.HeaderSubscription = uiActionsService.actionTriggered$.subscribe(
       action => {
         this.headerAction(action);
@@ -32,6 +34,7 @@ export class CryptokpisComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getCoins();
+    this.displayedColumns = this.apiService.getVisibleGridColumns();
   }
 
   headerAction(action) {
@@ -74,6 +77,16 @@ export class CryptokpisComponent implements OnInit, AfterViewInit {
 
   setColor(percent: number): string {
     return percent >= 0 ? 'LimeGreen' : 'Red';
+  }
+
+  editColumns(){
+    const dialogRef = this.dialog.open(ColumnsChooserComponent, {
+      height: '600px',
+      width: '700px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.displayedColumns = this.apiService.getVisibleGridColumns();
+    });
   }
 }
 

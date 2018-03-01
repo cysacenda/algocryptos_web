@@ -1,7 +1,18 @@
 <div class="page-header">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>
+  <mat-grid-list cols="20" rowHeight="2:1">
+    <mat-grid-tile  colspan='19'>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile  colspan='1'>
+      <button mat-button (click)="editColumns()">
+        <i class="material-icons">edit</i>
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
 </div>
 
 <div class="page-component">
@@ -53,19 +64,19 @@
     <!-- percent_change_1h Column -->
     <ng-container matColumnDef="percent_change_1h">
       <mat-header-cell *matHeaderCellDef mat-sort-header>1h Change</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_1h)"> {{row.percent_change_1h / 100 | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_1h)"> {{row.percent_change_1h / 100 | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- percent_change_24h Column -->
     <ng-container matColumnDef="percent_change_24h">
       <mat-header-cell *matHeaderCellDef mat-sort-header>24h Change</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_24h)"> {{row.percent_change_24h / 100 | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_24h)"> {{row.percent_change_24h / 100 | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- percent_change_7d Column -->
     <ng-container matColumnDef="percent_change_7d">
       <mat-header-cell *matHeaderCellDef mat-sort-header>7d Change</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_7d)"> {{row.percent_change_7d / 100 | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_7d)"> {{row.percent_change_7d / 100 | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- percent_change_ath Column -->
@@ -73,7 +84,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs ATH</mat-header-cell>
       <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_ath)">
         <span matTooltip="{{ (row.prices_ath_usd | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.ath_date | date:'dd/MM/yyyy')}}">
-            {{row.percent_change_ath | percent:'1.2-2'}}
+            {{row.percent_change_ath | percent:'1.1'}}
         </span>
 
       </mat-cell>
@@ -92,86 +103,86 @@
     <!-- Reddit subscribers 1d trend column -->
     <ng-container matColumnDef="subscribers_1d_trend">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit sub. 1d trend</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_1d_trend)"> {{row.subscribers_1d_trend | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_1d_trend)"> {{row.subscribers_1d_trend | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- Reddit subscribers 3d trend column -->
     <ng-container matColumnDef="subscribers_3d_trend">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit sub. 3d trend</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_3d_trend)"> {{row.subscribers_3d_trend | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_3d_trend)"> {{row.subscribers_3d_trend | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- Reddit subscribers 7d trend column -->
     <ng-container matColumnDef="subscribers_7d_trend">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit sub. 7d trend</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_7d_trend)"> {{row.subscribers_7d_trend | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_7d_trend)"> {{row.subscribers_7d_trend | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- Reddit subscribers 15d trend column -->
     <ng-container matColumnDef="subscribers_15d_trend">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit sub. 15d trend</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_15d_trend)"> {{row.subscribers_15d_trend | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_15d_trend)"> {{row.subscribers_15d_trend | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- Reddit subscribers 30d trend column -->
     <ng-container matColumnDef="subscribers_30d_trend">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit sub. 30d trend</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_30d_trend)"> {{row.subscribers_30d_trend | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_30d_trend)"> {{row.subscribers_30d_trend | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- Reddit subscribers 60d trend column -->
     <ng-container matColumnDef="subscribers_60d_trend">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit sub. 60d trend</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_60d_trend)"> {{row.subscribers_60d_trend | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_60d_trend)"> {{row.subscribers_60d_trend | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- Reddit subscribers 90d trend column -->
     <ng-container matColumnDef="subscribers_90d_trend">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit sub. 90d trend</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_90d_trend)"> {{row.subscribers_90d_trend | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_90d_trend)"> {{row.subscribers_90d_trend | percent:'1.1'}} </mat-cell>
     </ng-container>
 
     <!-- TODO : 24h volumes -->
     <!-- Kpi volumes mean 1h/30d -->
     <ng-container matColumnDef="volume_mean_last_1h_vs_30d">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 1h/30d</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_1h_vs_30d)"> {{row.volume_mean_last_1h_vs_30d | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_1h_vs_30d)"> {{row.volume_mean_last_1h_vs_30d | percent}} </mat-cell>
     </ng-container>
 
     <!-- Kpi volumes mean 3h/30d -->
     <ng-container matColumnDef="volume_mean_last_3h_30d">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 3h/30d</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_3h_30d)"> {{row.volume_mean_last_3h_30d | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_3h_30d)"> {{row.volume_mean_last_3h_30d | percent}} </mat-cell>
     </ng-container>
 
     <!-- Kpi volumes mean 6h/30d -->
     <ng-container matColumnDef="volume_mean_last_6h_30d">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 6h/30d</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_6h_30d)"> {{row.volume_mean_last_6h_30d | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_6h_30d)"> {{row.volume_mean_last_6h_30d | percent}} </mat-cell>
     </ng-container>
 
     <!-- Kpi volumes mean 12h/30d -->
     <ng-container matColumnDef="volume_mean_last_12h_30d">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 12h/30d</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_12h_30d)"> {{row.volume_mean_last_12h_30d | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_12h_30d)"> {{row.volume_mean_last_12h_30d | percent}} </mat-cell>
     </ng-container>
 
     <!-- Kpi volumes mean 24h/30d -->
     <ng-container matColumnDef="volume_mean_last_24h_30d">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 24h/30d</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_24h_30d)"> {{row.volume_mean_last_24h_30d | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_24h_30d)"> {{row.volume_mean_last_24h_30d | percent}} </mat-cell>
     </ng-container>
 
     <!-- Kpi volumes mean 3d/30d -->
     <ng-container matColumnDef="volume_mean_last_3d_30d">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 3d/30d</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_3d_30d)"> {{row.volume_mean_last_3d_30d | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_3d_30d)"> {{row.volume_mean_last_3d_30d | percent}} </mat-cell>
     </ng-container>
 
     <!-- Kpi volumes mean 7d/30d -->
     <ng-container matColumnDef="volume_mean_last_7d_30d">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 7d/30d</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_7d_30d)"> {{row.volume_mean_last_7d_30d | percent:'1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_7d_30d)"> {{row.volume_mean_last_7d_30d | percent}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
