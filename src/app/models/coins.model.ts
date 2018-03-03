@@ -9,9 +9,45 @@ export interface Coins {
   percent_change_1h: number;
   percent_change_24h: number;
   percent_change_7d: number;
-  prices_ath_usd: number;
-  percent_change_ath: number;
-  ath_date: Date;
+
+  // Lows / highs
+  price_low_15d: number;
+  date_low_15d: Date;
+  change_low_15d: number;
+  price_low_1m: number;
+  date_low_1m: Date;
+  change_low_1m: number;
+  price_low_3m: number;
+  date_low_3m: Date;
+  change_low_3m: number;
+  price_low_6m: number;
+  date_low_6m: Date;
+  change_low_6m: number;
+  price_low_1y: number;
+  date_low_1y: Date;
+  change_low_1y: number;
+  price_low_5y: number;
+  date_low_5y: Date;
+  change_low_5y: number;
+  price_high_15d: number;
+  date_high_15d: Date;
+  change_high_15d: number;
+  price_high_1m: number;
+  date_high_1m: Date;
+  change_high_1m: number;
+  price_high_3m: number;
+  date_high_3m: Date;
+  change_high_3m: number;
+  price_high_6m: number;
+  date_high_6m: Date;
+  change_high_6m: number;
+  price_high_1y: number;
+  date_high_1y: Date;
+  change_high_1y: number;
+  price_high_5y: number;
+  date_high_5y: Date;
+  change_high_5y: number;
+
   reddit_subscribers: number;
   timestamp_reddit_subscribers: Date;
   reddit_agr: String;

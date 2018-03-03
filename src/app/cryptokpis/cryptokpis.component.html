@@ -79,14 +79,123 @@
       <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_7d)"> {{row.percent_change_7d / 100 | percent:'1.1'}} </mat-cell>
     </ng-container>
 
-    <!-- percent_change_ath Column -->
-    <ng-container matColumnDef="percent_change_ath">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs ATH</mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="setColor(row.percent_change_ath)">
-        <span matTooltip="{{ (row.prices_ath_usd | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.ath_date | date:'dd/MM/yyyy')}}">
-            {{row.percent_change_ath | percent:'1.1'}}
+    <!-- percent_change_price_low_15d Column -->
+    <ng-container matColumnDef="change_low_15d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 15d low</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_low_15d)">
+        <span matTooltip="{{ (row.price_low_15d | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_low_15d | date:'dd/MM/yyyy')}}">
+            {{row.change_low_15d | percent:'1.1'}}
         </span>
+      </mat-cell>
+    </ng-container>
 
+    <!-- percent_change_price_high_15d Column -->
+    <ng-container matColumnDef="change_high_15d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 15d high</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_high_15d)">
+        <span matTooltip="{{ (row.price_high_15d | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_high_15d | date:'dd/MM/yyyy')}}">
+            {{row.change_high_15d | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_low_1m Column -->
+    <ng-container matColumnDef="change_low_1m">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 1m low</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_low_1m)">
+        <span matTooltip="{{ (row.price_low_1m | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_low_1m | date:'dd/MM/yyyy')}}">
+            {{row.change_low_1m | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_high_1m Column -->
+    <ng-container matColumnDef="change_high_1m">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 1m high</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_high_1m)">
+        <span matTooltip="{{ (row.price_high_1m | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_high_1m | date:'dd/MM/yyyy')}}">
+            {{row.change_high_1m | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_low_3m Column -->
+    <ng-container matColumnDef="change_low_3m">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 3m low</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_low_3m)">
+        <span matTooltip="{{ (row.price_low_3m | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_low_3m | date:'dd/MM/yyyy')}}">
+            {{row.change_low_3m | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_high_3m Column -->
+    <ng-container matColumnDef="change_high_3m">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 3m high</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_high_3m)">
+        <span matTooltip="{{ (row.price_high_3m | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_high_3m | date:'dd/MM/yyyy')}}">
+            {{row.change_high_3m | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_low_6m Column -->
+    <ng-container matColumnDef="change_low_6m">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 6m low</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_low_6m)">
+        <span matTooltip="{{ (row.price_low_6m | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_low_6m | date:'dd/MM/yyyy')}}">
+            {{row.change_low_6m | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_high_6m Column -->
+    <ng-container matColumnDef="change_high_6m">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 6m high</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_high_6m)">
+        <span matTooltip="{{ (row.price_high_6m | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_high_6m | date:'dd/MM/yyyy')}}">
+            {{row.change_high_6m | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_low_1y Column -->
+    <ng-container matColumnDef="change_low_1y">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 1y low</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_low_1y)">
+        <span matTooltip="{{ (row.price_low_1y | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_low_1y | date:'dd/MM/yyyy')}}">
+            {{row.change_low_1y | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_high_1y Column -->
+    <ng-container matColumnDef="change_high_1y">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 1y high</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_high_1y)">
+        <span matTooltip="{{ (row.price_high_1y | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_high_1y | date:'dd/MM/yyyy')}}">
+            {{row.change_high_1y | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_low_5y Column -->
+    <ng-container matColumnDef="change_low_5y">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 5y low</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_low_5y)">
+        <span matTooltip="{{ (row.price_low_5y | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_low_5y | date:'dd/MM/yyyy')}}">
+            {{row.change_low_5y | percent:'1.1'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- percent_change_price_high_5y Column -->
+    <ng-container matColumnDef="change_high_5y">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>%Change vs 5y high</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.change_high_5y)">
+        <span matTooltip="{{ (row.price_high_5y | currency:'USD':'symbol':'1.2-2') + ' - ' + (row.date_high_5y | date:'dd/MM/yyyy')}}">
+            {{row.change_high_5y | percent:'1.1'}}
+        </span>
       </mat-cell>
     </ng-container>
 

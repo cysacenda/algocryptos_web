@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import {Coins} from './models/coins.model';
 import {ProcessesInfos} from './models/processes-infos.model';
 import {MissingSocial} from './models/missing-social.model';
-import {Globaldata} from "./models/globaldata.model";
+import {Globaldata} from './models/globaldata.model';
 
 @Injectable()
 export class ApiService {
@@ -22,11 +22,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) {
     this.visibleGridColumns = ['rank', 'CoinName', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h',
-      'percent_change_24h', 'percent_change_7d', 'percent_change_ath', 'reddit_subscribers',
+      'percent_change_24h', 'percent_change_7d', 'reddit_subscribers',
       'subscribers_1d_trend',  'subscribers_3d_trend', 'subscribers_7d_trend',
       'subscribers_15d_trend', 'subscribers_30d_trend', 'subscribers_60d_trend',
       'subscribers_90d_trend', 'volume_mean_last_1h_vs_30d', 'volume_mean_last_3h_30d',
-      'volume_mean_last_6h_30d', 'volume_mean_last_12h_30d', 'volume_mean_last_24h_30d']
+      'volume_mean_last_6h_30d', 'volume_mean_last_12h_30d', 'volume_mean_last_24h_30d'];
   }
 
   public getCoins(): Promise<Array<Coins>> {
@@ -79,17 +79,20 @@ export class ApiService {
       .catch(this.handleError);
   }
 
-  public getGridColumns() : String[] {
+  public getGridColumns(): String[] {
     return ['rank', 'CoinName', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h',
-      'percent_change_24h', 'percent_change_7d', 'percent_change_ath', 'reddit_subscribers',
+      'percent_change_24h', 'percent_change_7d', 'reddit_subscribers',
       'subscribers_1d_trend',  'subscribers_3d_trend', 'subscribers_7d_trend',
       'subscribers_15d_trend', 'subscribers_30d_trend', 'subscribers_60d_trend',
       'subscribers_90d_trend', 'volume_mean_last_1h_vs_30d', 'volume_mean_last_3h_30d',
       'volume_mean_last_6h_30d', 'volume_mean_last_12h_30d', 'volume_mean_last_24h_30d',
-      'volume_mean_last_3d_30d', 'volume_mean_last_7d_30d'];
+      'volume_mean_last_3d_30d', 'volume_mean_last_7d_30d',
+      'change_low_15d', 'change_high_15d', 'change_low_1m', 'change_high_1m',
+      'change_low_3m', 'change_high_3m', 'change_low_6m', 'change_high_6m',
+      'change_low_1y', 'change_high_1y', 'change_low_5y', 'change_high_5y'];
   }
 
-  public getVisibleGridColumns() : String[] {
+  public getVisibleGridColumns(): String[] {
     return this.visibleGridColumns;
   }
 
