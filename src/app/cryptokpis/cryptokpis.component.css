@@ -7,8 +7,22 @@
   overflow: auto;
 }
 
+/* Freeze header : would be ok if table into container and truncate */
+/*mat-header-row {
+  position: sticky;
+  top: -.5px;
+  background: white;
+  z-index: 100;
+}*/
+
 /* permet d'avoir un tableau qui dépasse de la page
 .mat-header-row, .mat-row {
   min-width: 3000px;
 }
 */
+
+/* center le contenu des colonnes mais pas top en rendu (texte coupé)
+.mat-header-cell, .mat-cell {
+  display:flex;
+  justify-content:center;
+}*/

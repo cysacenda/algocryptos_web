@@ -1,4 +1,4 @@
-<h2>Displayed columns</h2>
+<h2 cdkFocusInitial>Displayed columns :</h2>
 
 <mat-selection-list [(ngModel)]="selectedOptions">
   <mat-list-option *ngFor="let column of gridColumns" [selected]="selectedColumns.includes(column)" value="{{column}}">
