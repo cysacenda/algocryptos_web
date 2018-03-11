@@ -26,15 +26,59 @@
     <ng-container matColumnDef="Reddit_name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit_name</mat-header-cell>
       <mat-cell *matCellDef="let row">
+        {{row.Reddit_name}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="reddit_name_manual">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit_name_manual</mat-header-cell>
+      <mat-cell *matCellDef="let row">
 
         <mat-form-field>
-          <input matInput placeholder="{{row.Name}} Subreddit" [(ngModel)]="row.Reddit_name">
+          <input matInput placeholder="{{row.Name}} Subreddit" [(ngModel)]="row.reddit_name_manual">
         </mat-form-field>
+      </mat-cell>
+    </ng-container>
 
-        <button mat-icon-button (click)="updateSubreddit(row.IdCryptoCompare, row.Reddit_name)">
+    <ng-container matColumnDef="Facebook_link">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Facebook_link</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.Facebook_link}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="facebook_link_manual">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>facebook_link_manual</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+
+        <mat-form-field>
+          <input matInput placeholder="{{row.Name}} Facebook" [(ngModel)]="row.facebook_link_manual">
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Twitter_link">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Twitter_link</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.Twitter_link}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="twitter_link_manual">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>twitter_link_manual</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field>
+          <input matInput placeholder="{{row.Name}} Twitter" [(ngModel)]="row.twitter_link_manual">
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Update">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Update</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="updateSubreddit(row.IdCryptoCompare, row.reddit_name_manual, row.twitter_link_manual, row.facebook_link_manual)">
           <mat-icon aria-label="Edit Subreddit link">save</mat-icon>
         </button>
-
       </mat-cell>
     </ng-container>
 

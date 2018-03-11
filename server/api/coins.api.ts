@@ -41,13 +41,19 @@ export class CoinsApi {
   public createSubreddit(req: Request, res: Response, next: NextFunction, pool: Pool) {
     const idCoinCryptoCompare: string = req.body.IdCoinCryptoCompare;
     const redditName: string = req.body.Reddit_name;
+    const Twitter_link: string = req.body.Twitter_link;
+    const Facebook_link: string = req.body.Facebook_link;
 
-    const text = 'INSERT INTO social_infos_manual("IdCoinCryptoCompare", "Reddit_name") VALUES($1, $2) RETURNING *';
-    const values = [idCoinCryptoCompare, redditName];
+    const values = [idCoinCryptoCompare, redditName, Twitter_link, Facebook_link];
+    const squery = 'INSERT INTO social_infos_manual("IdCoinCryptoCompare", "Reddit_name", "Twitter_link", "Facebook_link") ' +
+      'VALUES($1,$2,$3,$4) ' +
+      'ON CONFLICT ("IdCoinCryptoCompare") ' +
+      'DO UPDATE SET "Reddit_name" = $2, "Twitter_link" = $3, "Facebook_link" = $4 ' +
+      'RETURNING * ;';
 
-    pool.query(text, values, (err, response) => {
+    pool.query(squery, values, (err, response) => {
       if (err) {
-        res.json({Error: 'createSubreddit API'});
+        res.json({Error: 'Error in createSubreddit API'});
       } else {
         res.json(response.rows[0]);
       }
@@ -103,15 +109,13 @@ export class CoinsApi {
 
   public missingSocialCoins(req: Request, res: Response, next: NextFunction, pool: Pool) {
     let squery: String = '';
-    squery += 'SELECT co."IdCryptoCompare", co."Symbol", co."Name", co."CoinName" , sim."Reddit_name" FROM social_infos si\n';
+    squery += 'SELECT co."IdCryptoCompare", co."Symbol", co."Name", co."CoinName", \n';
+    squery += 'si."Reddit_name", si."Facebook_link", si."Twitter_link", \n';
+    squery += 'sim."Reddit_name" AS Reddit_name_manual, sim."Facebook_link" AS Facebook_link_manual, sim."Twitter_link" AS Twitter_link_manual FROM social_infos si\n';
     squery += 'INNER JOIN coins co ON si."IdCoinCryptoCompare" = co."IdCryptoCompare"\n';
-    squery += 'LEFT JOIN social_infos_manual sim ON sim."IdCoinCryptoCompare" = co."IdCryptoCompare"\n';
-    squery += 'WHERE si."Reddit_name" IS NULL AND sim."Reddit_name" IS NULL;';
-
-
+    squery += 'LEFT JOIN social_infos_manual sim ON sim."IdCoinCryptoCompare" = co."IdCryptoCompare";';
 
     pool.query(squery, (err, resp) => {
-      console.log(err, resp);
       res.json(resp['rows']);
       next();
     });
