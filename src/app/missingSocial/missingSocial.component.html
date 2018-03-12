@@ -23,15 +23,8 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="Reddit_name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit_name</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        {{row.Reddit_name}}
-      </mat-cell>
-    </ng-container>
-
     <ng-container matColumnDef="reddit_name_manual">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit_name_manual</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Subreddit</mat-header-cell>
       <mat-cell *matCellDef="let row">
 
         <mat-form-field>
@@ -40,15 +33,9 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="Facebook_link">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Facebook_link</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        {{row.Facebook_link}}
-      </mat-cell>
-    </ng-container>
 
     <ng-container matColumnDef="facebook_link_manual">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>facebook_link_manual</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Facebook</mat-header-cell>
       <mat-cell *matCellDef="let row">
 
         <mat-form-field>
@@ -57,15 +44,9 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="Twitter_link">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Twitter_link</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        {{row.Twitter_link}}
-      </mat-cell>
-    </ng-container>
 
     <ng-container matColumnDef="twitter_link_manual">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>twitter_link_manual</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Twitter</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <mat-form-field>
           <input matInput placeholder="{{row.Name}} Twitter" [(ngModel)]="row.twitter_link_manual">

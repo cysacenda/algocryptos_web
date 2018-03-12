@@ -10,7 +10,7 @@ import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/mat
 })
 export class MissingSocialComponent implements OnInit, AfterViewInit {
   missingSocial: MissingSocial [];
-  displayedColumns = ['IdCryptoCompare', 'Name', 'CoinName', 'Reddit_name', 'reddit_name_manual', 'Facebook_link', 'facebook_link_manual', 'Twitter_link' , 'twitter_link_manual', 'Update'];
+  displayedColumns = ['IdCryptoCompare', 'Name', 'CoinName', 'reddit_name_manual', 'facebook_link_manual' , 'twitter_link_manual', 'Update'];
 
   dataSource: MatTableDataSource<MissingSocial>;
 
@@ -40,15 +40,19 @@ export class MissingSocialComponent implements OnInit, AfterViewInit {
         Facebook_link: facebookLink
       };
 
-      this.apiService.setMissingSocialReddit(bodyData)
-        .then(response => {
-          if (response.IdCoinCryptoCompare === idCryptoCompare) {
-            alert('Social infos has been updated');
-          } else {
-            alert(response.Error);
-          }
-          this.getMissingSocial();
-        });
+      if (subredditName == null) {
+        alert ('Cannot update if subreddit is empty');
+      } else {
+        this.apiService.setMissingSocialReddit(bodyData)
+          .then(response => {
+            if (response.IdCoinCryptoCompare === idCryptoCompare) {
+              alert('Social infos has been updated');
+            } else {
+              alert(response.Error);
+            }
+            this.getMissingSocial();
+          });
+      }
     } else {
       alert ('Error');
     }
@@ -66,13 +70,20 @@ export class MissingSocialComponent implements OnInit, AfterViewInit {
         // Temporary solution -> Links should be clean in the database -> No more "https://www.facebook.com/" and "https://twitter.com/"
         // From here
         for (const crypto in missingSocial) {
+
+
           if (missingSocial[crypto].Facebook_link != null) {
-            const facebook_link_length = (missingSocial[crypto].Facebook_link.length - 26);
-            missingSocial[crypto].Facebook_link = missingSocial[crypto].Facebook_link.substr(25, facebook_link_length);
+            const facebook_link_length = missingSocial[crypto].Facebook_link.length - 26;
+            //missingSocial[crypto].Facebook_link = missingSocial[crypto].Facebook_link.substr(25, facebook_link_length);
+            missingSocial[crypto].facebook_link_manual = missingSocial[crypto].Facebook_link.substr(25, facebook_link_length);
           }
           if (missingSocial[crypto].Twitter_link != null) {
-            const twitter_link_length = (missingSocial[crypto].Twitter_link.length - 20);
-            missingSocial[crypto].Twitter_link = missingSocial[crypto].Twitter_link.substr(20, twitter_link_length);
+            const twitter_link_length = missingSocial[crypto].Twitter_link.length - 20;
+            //missingSocial[crypto].Twitter_link = missingSocial[crypto].Twitter_link.substr(20, twitter_link_length);
+            missingSocial[crypto].twitter_link_manual = missingSocial[crypto].Twitter_link.substr(20, twitter_link_length);
+          }
+          if (missingSocial[crypto].reddit_name_manual == null) {
+            missingSocial[crypto].reddit_name_manual = missingSocial[crypto].Reddit_name;
           }
         }
         // To here - Delete me when database has clean url
