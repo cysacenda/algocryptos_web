@@ -294,6 +294,13 @@
       <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_7d_30d)"> {{row.volume_mean_last_7d_30d | percent}} </mat-cell>
     </ng-container>
 
+    <!-- images
+    <ng-container matColumnDef="volume_mean_last_7d_30d">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 7d/30d</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_7d_30d)"> {{row.volume_mean_last_7d_30d | percent}} </mat-cell>
+    </ng-container>
+    -->
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;">
     </mat-row>

@@ -10,5 +10,6 @@ export const environment = {
   coinsUrl: 'coins',
   processesInfosUrl: 'processes',
   missingSocialUrl: 'missingCoins',
-  globaldataUrl: 'globaldata'
+  globaldataUrl: 'globaldata',
+  imgUrl: 'http://localhost:3000/assets/img'
 };

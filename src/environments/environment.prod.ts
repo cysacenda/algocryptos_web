@@ -4,5 +4,6 @@ export const environment = {
   coinsUrl: 'coins',
   processesInfosUrl: 'processes',
   missingSocialUrl: 'missingCoins',
-  globaldataUrl: 'globaldata'
+  globaldataUrl: 'globaldata',
+  imgUrl: 'https://d34xbsgnyo3jm0.cloudfront.net/img/'
 };
