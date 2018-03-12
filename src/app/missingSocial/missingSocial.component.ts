@@ -10,7 +10,7 @@ import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/mat
 })
 export class MissingSocialComponent implements OnInit, AfterViewInit {
   missingSocial: MissingSocial [];
-  displayedColumns = ['IdCryptoCompare', 'Name', 'CoinName', 'Reddit_name'];
+  displayedColumns = ['IdCryptoCompare', 'Name', 'CoinName', 'Reddit_name', 'reddit_name_manual', 'Facebook_link', 'facebook_link_manual', 'Twitter_link' , 'twitter_link_manual', 'Update'];
 
   dataSource: MatTableDataSource<MissingSocial>;
 
@@ -20,39 +20,62 @@ export class MissingSocialComponent implements OnInit, AfterViewInit {
   constructor(private apiService: ApiService, public dialog: MatDialog) {
   }
 
-  updateSubreddit(idCryptoCompare, subredditName): void {
+  updateSubreddit(idCryptoCompare, subredditName, twitterLink, facebookLink): void {
 
-    if (subredditName != null && idCryptoCompare != null) {
+    if (subredditName ===  '') {
+      subredditName = null;
+    }
+    if (twitterLink === '') {
+      twitterLink = null;
+    }
+    if (facebookLink === '') {
+      facebookLink = null;
+    }
+
+    if (idCryptoCompare != null) {
       const bodyData = {
         IdCoinCryptoCompare: idCryptoCompare,
-        Reddit_name: subredditName
+        Reddit_name: subredditName,
+        Twitter_link: twitterLink,
+        Facebook_link: facebookLink
       };
 
       this.apiService.setMissingSocialReddit(bodyData)
         .then(response => {
           if (response.IdCoinCryptoCompare === idCryptoCompare) {
-            alert(response.Reddit_name + ' has been added');
+            alert('Social infos has been updated');
+          } else {
+            alert(response.Error);
           }
-          // alert(subredditName + ' has been added');
-          this.apiService.getMissingSocial()
-            .then(missingSocial => {
-              this.missingSocial = missingSocial;
-              this.dataSource = new MatTableDataSource<MissingSocial>(this.missingSocial);
-              this.dataSource.paginator = this.paginator;
-              this.dataSource.sort = this.sort;
-            });
+          this.getMissingSocial();
         });
-    } else {
-      alert('Subreddit is empty');
     }
   }
 
-
   ngOnInit() {
+    this.getMissingSocial();
+  }
+
+  getMissingSocial() {
     this.apiService.getMissingSocial()
       .then(missingSocial => {
+
+        // FIXME
+        // Temporary solution -> Links should be clean in the database -> No more "https://www.facebook.com/" and "https://twitter.com/"
+        // From here
+        for (const crypto in missingSocial) {
+          if (missingSocial[crypto].Facebook_link != null) {
+            const facebook_link_length = (missingSocial[crypto].Facebook_link.length - 26);
+            missingSocial[crypto].Facebook_link = missingSocial[crypto].Facebook_link.substr(25, facebook_link_length);
+          }
+          if (missingSocial[crypto].Twitter_link != null) {
+            const twitter_link_length = (missingSocial[crypto].Twitter_link.length - 20);
+            missingSocial[crypto].Twitter_link = missingSocial[crypto].Twitter_link.substr(20, twitter_link_length);
+          }
+        }
+        // To here - Delete me when database has clean url
+
         this.missingSocial = missingSocial;
-        console.log(missingSocial);
         this.dataSource = new MatTableDataSource<MissingSocial>(this.missingSocial);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
