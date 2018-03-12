@@ -8,6 +8,9 @@ export class CoinsApi {
     router.delete('/coins/:id([0-9a-f]{24})', (req: Request, res: Response, next: NextFunction) => {
       new CoinsApi().delete(req, res, next);
     });
+    router.delete('/missingCoins', (req: Request, res: Response, next: NextFunction) => {
+      new CoinsApi().deleteMissingSocial(req, res, next, pool);
+    });
 
     // GET
     router.get('/coins', (req: Request, res: Response, next: NextFunction) => {
@@ -53,7 +56,7 @@ export class CoinsApi {
 
     pool.query(squery, values, (err, response) => {
       if (err) {
-        res.json({Error: 'Error in createSubreddit API'});
+        res.json({error: 'Error in createSubreddit API'});
       } else {
         res.json(response.rows[0]);
       }
@@ -96,7 +99,7 @@ export class CoinsApi {
     squery += 'left outer join kpi_reddit_subscribers kp on (kp."IdCryptoCompare" = co."IdCryptoCompare")\n';
     squery += 'left outer join kpi_market_volumes kv on (kv."IdCoinCryptoCompare" = co."IdCryptoCompare")\n';
     squery += 'order by market_cap_usd desc\n';
-    console.log(squery);
+    // console.log(squery);
     pool.query(squery, (err, resp) => {
       try {
         res.json(resp['rows']);
@@ -118,6 +121,20 @@ export class CoinsApi {
     pool.query(squery, (err, resp) => {
       res.json(resp['rows']);
       next();
+    });
+  }
+
+  public deleteMissingSocial(req: Request, res: Response, next: NextFunction, pool: Pool) {
+    const idCoinCryptoCompare: string = req.body.IdCoinCryptoCompare;
+    const values = [idCoinCryptoCompare];
+    const squery = 'DELETE from social_infos_manual sim WHERE sim."IdCoinCryptoCompare" = $1;';
+
+    pool.query(squery, values, (err, resp) => {
+      if (err) {
+        res.json({error: 'Error in deleteMissingSocial API'});
+      } else {
+        res.json({IdCoinCryptoCompare: idCoinCryptoCompare});
+      }
     });
   }
 
