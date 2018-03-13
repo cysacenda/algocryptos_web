@@ -7,6 +7,10 @@
   overflow: auto;
 }
 
+.mat-column-image {
+  flex: 0 0 10%;
+}
+
 /* Freeze header : would be ok if table into container and truncate */
 /*mat-header-row {
   position: sticky;
