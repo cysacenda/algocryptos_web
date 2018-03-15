@@ -296,9 +296,9 @@
 
     <!-- images -->
     <ng-container matColumnDef="image">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Prices/Vol.</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>7d prices/Vol.</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <img src='assets/1182.png' />
+        <img src='assets/{{row.IdCryptoCompare}}.png' />
       </mat-cell>
     </ng-container>
 
