@@ -298,7 +298,8 @@
     <ng-container matColumnDef="image">
       <mat-header-cell *matHeaderCellDef mat-sort-header>7d prices/Vol.</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <img src='assets/{{row.IdCryptoCompare}}.png' />
+        <!--<img [src]='"assets/" + row.IdCryptoCompare + ".png"' onError="this.src='assets/none.png'"/>-->
+        <img [src]='"assets/" + row.IdCryptoCompare + ".png"'/>
       </mat-cell>
     </ng-container>
 

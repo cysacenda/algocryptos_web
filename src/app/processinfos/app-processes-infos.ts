@@ -5,7 +5,8 @@ import {ProcessesInfos} from '../models/processes-infos.model';
 
 @Component({
   selector: 'app-example-dialog',
-  templateUrl: './app-processes-infos.html'
+  templateUrl: './app-processes-infos.html',
+  styleUrls: ['./app-processes-infos.scss']
 })
 export class ProcessesInfosComponent implements OnInit {
 

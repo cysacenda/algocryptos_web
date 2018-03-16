@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'variables';
+@import 'mixins';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+@import '~@angular/material/theming';
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto, monospace',
+  $headline: mat-typography-level(16px, 24px, 700),
+  $body-1: mat-typography-level(11px, 13px, 500),
+  $caption: mat-typography-level(10px, 13px, 500),
+  $button: mat-typography-level(12px, 13px, 500)
+);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
+
+// Override the typography in the core CSS.
+@include mat-core($custom-typography);
+
+body {
+  margin: 0;
+}
+
+.app-content {
+  padding: 15px;
+}
+
+.spinner {
+  display:block;
+  margin:0 auto;
+}
+
+.page-component {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.page-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}

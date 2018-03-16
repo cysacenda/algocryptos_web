@@ -6,7 +6,7 @@ import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/mat
 @Component({
   selector: 'app-missing-reddit',
   templateUrl: './missingSocial.component.html',
-  styleUrls: ['./missingSocial.component.css']
+  styleUrls: ['./missingSocial.component.scss']
 })
 export class MissingSocialComponent implements OnInit, AfterViewInit {
   missingSocial: MissingSocial [];

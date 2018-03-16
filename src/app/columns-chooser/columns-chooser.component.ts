@@ -6,7 +6,7 @@ import {ApiService} from "../api.service";
 @Component({
   selector: 'app-columns-chooser',
   templateUrl: './columns-chooser.component.html',
-  styleUrls: ['./columns-chooser.component.css']
+  styleUrls: ['./columns-chooser.component.scss']
 })
 export class ColumnsChooserComponent implements OnInit {
   gridColumns = [];

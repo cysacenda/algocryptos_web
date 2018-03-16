@@ -28,6 +28,7 @@ import {MissingSocialComponent} from './missingSocial/missingSocial.component';
 import {FormsModule} from '@angular/forms';
 import {UIActionsService} from './ui.actions.service';
 import {ColumnsChooserComponent} from './columns-chooser/columns-chooser.component';
+import { DefaultImageDirective } from './default-image.directive';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {ColumnsChooserComponent} from './columns-chooser/columns-chooser.compone
     GlobalkpisComponent,
     MissingSocialComponent,
     ProcessesInfosComponent,
-    ColumnsChooserComponent
+    ColumnsChooserComponent,
+    DefaultImageDirective
   ],
   imports: [
     CommonModule,

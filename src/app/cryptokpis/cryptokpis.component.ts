@@ -11,7 +11,7 @@ import {ColumnsChooserComponent} from "../columns-chooser/columns-chooser.compon
 @Component({
   selector: 'app-cryptokpis',
   templateUrl: './cryptokpis.component.html',
-  styleUrls: ['./cryptokpis.component.css']
+  styleUrls: ['./cryptokpis.component.scss']
 })
 export class CryptokpisComponent implements OnInit, AfterViewInit {
   coins: Coins [];
