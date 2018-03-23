@@ -21,7 +21,7 @@ export class ApiService {
   private visibleGridColumns: String[];
 
   constructor(private http: HttpClient) {
-    this.visibleGridColumns = ['rank', 'CoinName', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h',
+    this.visibleGridColumns = ['crypto_rank', 'crypto_name', 'symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h',
       'percent_change_24h', 'percent_change_7d',
       'change_low_3m', 'change_high_3m',
       'reddit_subscribers', 'subscribers_1d_trend',  'subscribers_3d_trend',
@@ -83,7 +83,7 @@ export class ApiService {
   }
 
   public getGridColumns(): String[] {
-    return ['rank', 'CoinName', 'Symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h',
+    return ['crypto_rank', 'crypto_name', 'symbol', 'price_usd', 'market_cap_usd', 'percent_change_1h',
       'percent_change_24h', 'percent_change_7d',
       'change_low_15d', 'change_high_15d', 'change_low_1m', 'change_high_1m',
       'change_low_3m', 'change_high_3m', 'change_low_6m', 'change_high_6m',

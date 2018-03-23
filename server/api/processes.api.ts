@@ -16,7 +16,7 @@ export class ProcessesApi {
 
   public list(req: Request, res: Response, next: NextFunction, pool: Pool) {
     let squery: String = '';
-    squery = 'select "IdProcess", "Name", "Status", "timestamp"\n';
+    squery = 'select process_id, process_name, status, timestamp\n';
     squery += 'from process_params\n';
     squery += 'order by timestamp\n';
     pool.query(squery, (err, resp) => {
@@ -37,14 +37,14 @@ export class ProcessesApi {
     const status: string = req.params[PARAM_ID];
 
     let squery: String = '';
-    squery = 'select pph."IdProcess", pph."Name", pd."Description", max(pph.timestamp) as timestamp\n';
+    squery = 'select pph.process_id, pph.process_name, pd.description, max(pph.timestamp) as timestamp\n';
     squery += 'from process_params_histo pph\n';
-    squery += 'left outer join process_description pd on (pd."Name" = pph."Name")\n';
-    squery += 'where "Status" = \'' + status + '\'\n';
-    squery += 'group by "IdProcess", pph."Name", pd."Description"\n';
+    squery += 'left outer join process_description pd on (pd.process_name = pph.process_name)\n';
+    squery += 'where status = \'' + status + '\'\n';
+    squery += 'group by process_id, pph.process_name, pd.description\n';
     squery += 'order by timestamp desc\n';
     squery += 'limit 12\n';
-    console.log(squery);
+    // console.log(squery);
     pool.query(squery, (err, resp) => {
       res.json(resp['rows']);
       next();

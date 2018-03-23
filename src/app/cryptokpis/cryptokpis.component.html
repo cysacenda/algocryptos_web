@@ -20,31 +20,31 @@
   <mat-table [dataSource]="dataSource" matSort>
 
     <!-- rank Column -->
-    <ng-container matColumnDef="rank">
+    <ng-container matColumnDef="crypto_rank">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Rank </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <span matTooltip="Id={{row.IdCryptoCompare}}">
-          {{row.rank}}
+        <span matTooltip="Id={{row.id_cryptocompare}}">
+          {{row.crypto_rank}}
         </span>
       </mat-cell>
     </ng-container>
 
     <!-- CoinName Column -->
-    <ng-container matColumnDef="CoinName">
+    <ng-container matColumnDef="crypto_name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <span matTooltip="CoinMarketCap">
-          <a target="_blank" [href]="'https://coinmarketcap.com/currencies/' + row.namecmc + '/'">{{row.CoinName}}</a>
+          <a target="_blank" [href]="'https://coinmarketcap.com/currencies/' + row.namecmc + '/'">{{row.crypto_name}}</a>
         </span>
       </mat-cell>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="Symbol">
+    <ng-container matColumnDef="symbol">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <span matTooltip="Subreddit">
-            <a target="_blank" [href]="'https://www.reddit.com/r/' + row.reddit_agr + '/'">{{row.Symbol}}</a>
+            <a target="_blank" [href]="'https://www.reddit.com/r/' + row.reddit_agr + '/'">{{row.symbol}}</a>
         </span>
       </mat-cell>
     </ng-container>
@@ -298,7 +298,7 @@
     <ng-container matColumnDef="image">
       <mat-header-cell *matHeaderCellDef mat-sort-header>7d prices/Vol.</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <img [src]='"assets/" + row.IdCryptoCompare + ".png"' onError="this.src='assets/none.png'"/>
+        <img [src]='"assets/" + row.id_cryptocompare + ".png"' onError="this.src='assets/none.png'"/>
       </mat-cell>
     </ng-container>
 

@@ -4,22 +4,22 @@
 <div class="page-component">
 
   <mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="IdCryptoCompare">
+    <ng-container matColumnDef="id_cryptocompare">
       <mat-header-cell *matHeaderCellDef mat-sort-header>IdCryptoCompare</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{row.IdCryptoCompare}}
+        {{row.id_cryptocompare}}
       </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="Name">
+    <ng-container matColumnDef="crypto_name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let row">
-          {{row.Name}}
+          {{row.crypto_name}}
       </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="CoinName">
+    <ng-container matColumnDef="coin_name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>CoinName</mat-header-cell>
       <mat-cell *matCellDef="let row">
-          {{row.CoinName}}
+          {{row.coin_name}}
       </mat-cell>
     </ng-container>
 
@@ -28,7 +28,7 @@
       <mat-cell *matCellDef="let row">
 
         <mat-form-field>
-          <input matInput placeholder="{{row.Name}} Subreddit" [(ngModel)]="row.reddit_name_manual">
+          <input matInput placeholder="{{row.crypto_name}} Subreddit" [(ngModel)]="row.reddit_name_manual">
         </mat-form-field>
       </mat-cell>
     </ng-container>
@@ -39,7 +39,7 @@
       <mat-cell *matCellDef="let row">
 
         <mat-form-field>
-          <input matInput placeholder="{{row.Name}} Facebook" [(ngModel)]="row.facebook_link_manual">
+          <input matInput placeholder="{{row.crypto_name}} Facebook" [(ngModel)]="row.facebook_link_manual">
         </mat-form-field>
       </mat-cell>
     </ng-container>
@@ -49,15 +49,15 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Twitter</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <mat-form-field>
-          <input matInput placeholder="{{row.Name}} Twitter" [(ngModel)]="row.twitter_link_manual">
+          <input matInput placeholder="{{row.crypto_name}} Twitter" [(ngModel)]="row.twitter_link_manual">
         </mat-form-field>
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="Update">
+    <ng-container matColumnDef="update">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Update</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="updateSubreddit(row.IdCryptoCompare, row.reddit_name_manual, row.twitter_link_manual, row.facebook_link_manual)">
+        <button mat-icon-button (click)="updateSubreddit(row.id_cryptocompare, row.reddit_name_manual, row.twitter_link_manual, row.facebook_link_manual)">
           <mat-icon aria-label="Edit Subreddit link">save</mat-icon>
         </button>
       </mat-cell>

@@ -1,7 +1,7 @@
 export interface ProcessesInfos {
-  IdProcess: number;
-  Name: String;
-  Description: String;
-  Status: String;
+  process_id: number;
+  process_name: String;
+  description: String;
+  status: String;
   timestamp: Date;
 }

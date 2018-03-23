@@ -7,10 +7,10 @@
     <h2>Running processes on server :</h2>
       <mat-list>
         <mat-list-item *ngFor="let process of runningProcesses">
-            <mat-icon mat-list-icon>{{process.Status == 'RUNNING' ? 'play_arrow' : 'pause'}}</mat-icon>
-          <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
-          <p mat-line> {{process.Description}} </p>
-            <p mat-line> {{process.Status}} </p>
+            <mat-icon mat-list-icon>{{process.status == 'RUNNING' ? 'play_arrow' : 'pause'}}</mat-icon>
+          <h4 mat-line>{{process.process_id + ' - ' + process.process_name}}</h4>
+          <p mat-line> {{process.description}} </p>
+            <p mat-line> {{process.status}} </p>
           <p mat-line> {{(process.timestamp | date:'short') + ' ' + this.getTimeAgo(process.timestamp)}} </p>
         </mat-list-item>
       </mat-list>
@@ -27,9 +27,9 @@
   <mat-list>
     <mat-list-item *ngFor="let process of successProcesses">
       <mat-icon mat-list-icon>done</mat-icon>
-      <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
-      <p mat-line> {{process.Description}} </p>
-      <p mat-line> {{process.Status}} </p>
+      <h4 mat-line>{{process.process_id + ' - ' + process.process_name}}</h4>
+      <p mat-line> {{process.description}} </p>
+      <p mat-line> {{process.status}} </p>
       <p mat-line> {{(process.timestamp | date:'short') + ' ' + this.getTimeAgo(process.timestamp)}} </p>
     </mat-list-item>
   </mat-list>
@@ -42,9 +42,9 @@
     <mat-list>
       <mat-list-item *ngFor="let process of errorProcesses">
         <mat-icon mat-list-icon>error</mat-icon>
-        <h4 mat-line>{{process.IdProcess + ' - ' + process.Name}}</h4>
-        <p mat-line> {{process.Description}} </p>
-        <p mat-line> {{process.Status}} </p>
+        <h4 mat-line>{{process.process_id + ' - ' + process.process_name}}</h4>
+        <p mat-line> {{process.description}} </p>
+        <p mat-line> {{process.status}} </p>
         <p mat-line> {{(process.timestamp | date:'short') + ' ' + this.getTimeAgo(process.timestamp)}} </p>
       </mat-list-item>
     </mat-list>
