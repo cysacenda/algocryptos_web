@@ -30,11 +30,11 @@
     </ng-container>
 
     <!-- CoinName Column -->
-    <ng-container matColumnDef="crypto_name">
+    <ng-container matColumnDef="coin_name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <span matTooltip="CoinMarketCap">
-          <a target="_blank" [href]="'https://coinmarketcap.com/currencies/' + row.namecmc + '/'">{{row.crypto_name}}</a>
+          <a target="_blank" [href]="'https://coinmarketcap.com/currencies/' + row.namecmc + '/'">{{row.coin_name}}</a>
         </span>
       </mat-cell>
     </ng-container>

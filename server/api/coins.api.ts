@@ -41,8 +41,8 @@ export class CoinsApi {
   public create(req: Request, res: Response, next: NextFunction) {
   }
 
+  // TODO : Refactor - create new file with things related to social infos and not to coins
   public createSubreddit(req: Request, res: Response, next: NextFunction, pool: Pool) {
-    console.log(req.body.id_cryptocompare);
     const idCoinCryptoCompare: string = req.body.id_cryptocompare;
     const redditName: string = req.body.reddit_name;
     const Twitter_link: string = req.body.twitter_link;
@@ -54,7 +54,6 @@ export class CoinsApi {
       'ON CONFLICT (id_cryptocompare) ' +
       'DO UPDATE SET reddit_name = $2, twitter_link = $3, facebook_link = $4 ' +
       'RETURNING * ;';
-
     pool.query(squery, values, (err, response) => {
       if (err) {
         res.json({error: 'Error in createSubreddit API'});
@@ -126,7 +125,6 @@ export class CoinsApi {
   }
 
   public deleteMissingSocial(req: Request, res: Response, next: NextFunction, pool: Pool) {
-    console.log(req.body.id_cryptocompare);
     const idCoinCryptoCompare: string = req.body.id_cryptocompare;
     const values = [idCoinCryptoCompare];
     const squery = 'DELETE from social_infos_manual sim WHERE sim.id_cryptocompare = $1;';

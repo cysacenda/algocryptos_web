@@ -1,6 +1,6 @@
 export interface Coins {
   id_cryptocompare: number;
-  crypto_name: String;
+  coin_name: String;
   namecmc: String;
   symbol: String;
   price_usd: number;
