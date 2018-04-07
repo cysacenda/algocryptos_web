@@ -1,0 +1,59 @@
+<div *ngIf="this.globaldata != null">
+  <h3>Global volumes KPI :</h3>
+
+  <table>
+    <tr>
+      <th>KPI</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>Mean vol 1h/30d</td>
+      <td [style.color]="setColor(this.globaldata.volume_mean_last_1h_vs_30d)">
+        {{this.globaldata.volume_mean_last_1h_vs_30d | percent:'1.1'}}
+      </td>
+    </tr>
+    <tr>
+      <td>Mean vol 3h/30d</td>
+      <td [style.color]="setColor(this.globaldata.volume_mean_last_3h_30d)">
+        {{this.globaldata.volume_mean_last_3h_30d | percent:'1.1'}}
+      </td>
+    </tr>
+    <tr>
+      <td>Mean vol 6h/30d</td>
+      <td [style.color]="setColor(this.globaldata.volume_mean_last_6h_30d)">
+        {{this.globaldata.volume_mean_last_6h_30d | percent:'1.1'}}
+      </td>
+    </tr>
+    <tr>
+      <td>Mean vol 12h/30d</td>
+      <td [style.color]="setColor(this.globaldata.volume_mean_last_12h_30d)">
+        {{this.globaldata.volume_mean_last_12h_30d | percent:'1.1'}}
+      </td>
+    </tr>
+    <tr>
+      <td>Mean vol 24h/30d</td>
+      <td [style.color]="setColor(this.globaldata.volume_mean_last_24h_30d)">
+        {{this.globaldata.volume_mean_last_24h_30d | percent:'1.1'}}
+      </td>
+    </tr>
+    <tr>
+      <td>Mean vol 3d/30d</td>
+      <td [style.color]="setColor(this.globaldata.volume_mean_last_3d_30d)">
+        {{this.globaldata.volume_mean_last_3d_30d | percent:'1.1'}}
+      </td>
+    </tr>
+    <tr>
+      <td>Mean vol 7d/30d</td>
+      <td [style.color]="setColor(this.globaldata.volume_mean_last_7d_30d)">
+        {{this.globaldata.volume_mean_last_7d_30d | percent:'1.1'}}
+      </td>
+    </tr>
+
+  </table>
+
+</div>
+
+
+
+
+

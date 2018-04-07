@@ -28,6 +28,7 @@ import {MissingSocialComponent} from './missingSocial/missingSocial.component';
 import {FormsModule} from '@angular/forms';
 import {UIActionsService} from './ui.actions.service';
 import {ColumnsChooserComponent} from './columns-chooser/columns-chooser.component';
+import { GlobalVolumesKpiComponent } from './global-volumes-kpi/global-volumes-kpi.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {ColumnsChooserComponent} from './columns-chooser/columns-chooser.compone
     GlobalkpisComponent,
     MissingSocialComponent,
     ProcessesInfosComponent,
-    ColumnsChooserComponent
+    ColumnsChooserComponent,
+    GlobalVolumesKpiComponent
   ],
   imports: [
     CommonModule,
@@ -68,10 +70,10 @@ import {ColumnsChooserComponent} from './columns-chooser/columns-chooser.compone
     MatGridListModule
   ],
   entryComponents: [
-    ProcessesInfosComponent, ColumnsChooserComponent
+    ProcessesInfosComponent, ColumnsChooserComponent, GlobalVolumesKpiComponent
   ],
   exports: [
-    ProcessesInfosComponent, ColumnsChooserComponent
+    ProcessesInfosComponent, ColumnsChooserComponent, GlobalVolumesKpiComponent
   ],
   providers: [ApiService, MatDialogModule, UIActionsService],
   bootstrap: [AppComponent]

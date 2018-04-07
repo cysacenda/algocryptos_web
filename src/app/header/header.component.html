@@ -13,9 +13,20 @@
 
     <span *ngIf="this.globaldata!= null">
       <mat-chip-list>
-        <mat-chip>Market cap : {{this.globaldata.total_market_cap_usd.toFixed(0)}}b$</mat-chip>
-        <mat-chip>24h vol : {{this.globaldata.total_24h_volume_usd.toFixed(0)}}b$</mat-chip>
+        <mat-chip>
+          Market cap : {{this.globaldata.total_market_cap_usd.toFixed(0)}}b$ (
+          <div [style.color]="setColor(this.globaldata.global_market_cap_24h_pctchange)">
+            {{this.globaldata.global_market_cap_24h_pctchange > 0 ? '+' : ''}}
+            {{this.globaldata.global_market_cap_24h_pctchange | percent:'1.1'}}
+          </div>
+          )
+        </mat-chip>
+        <mat-chip (click)="volumesKPI()">24h vol : {{this.globaldata.total_24h_volume_usd.toFixed(0)}}b$</mat-chip>
       </mat-chip-list>
+    </span>
+
+    <span *ngIf="this.globaldata!= null">
+      <img [src]='"assets/global_7d.png"'/>
     </span>
 
     <span>

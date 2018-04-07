@@ -4,7 +4,7 @@
 
 <mat-card>
   <div *ngIf="running_loaded && runningProcesses.length != 0">
-    <h2>Running processes on server :</h2>
+    <h3>Running processes on server :</h3>
       <mat-list>
         <mat-list-item *ngFor="let process of runningProcesses">
             <mat-icon mat-list-icon>{{process.status == 'RUNNING' ? 'play_arrow' : 'pause'}}</mat-icon>
@@ -17,13 +17,13 @@
   </div>
 
   <div *ngIf="running_loaded && runningProcesses.length == 0">
-    <h2>No process running for the moment.</h2>
+    <h3>No process running for the moment.</h3>
   </div>
 </mat-card>
 
 <mat-card>
   <div *ngIf="success_loaded && successProcesses.length != 0">
-  <h2>Last successful processes :</h2>
+  <h3>Last successful processes :</h3>
   <mat-list>
     <mat-list-item *ngFor="let process of successProcesses">
       <mat-icon mat-list-icon>done</mat-icon>
@@ -38,7 +38,7 @@
 
 <mat-card>
   <div *ngIf="error_loaded && errorProcesses.length != 0">
-    <h2>Last processes in error :</h2>
+    <h3>Last processes in error :</h3>
     <mat-list>
       <mat-list-item *ngFor="let process of errorProcesses">
         <mat-icon mat-list-icon>error</mat-icon>
