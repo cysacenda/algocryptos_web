@@ -71,4 +71,12 @@ export interface Coins {
   volume_mean_last_3d_30d: number;
   volume_mean_last_7d_30d: number;
   timestamp_volumes: Date;
+
+  // Google trend kpi
+  search_1d_trend: number;
+  search_3d_trend: number;
+  search_7d_trend: number;
+  search_15d_trend: number;
+  search_1m_trend: number;
+  timestamp_googletrend: Date;
 }

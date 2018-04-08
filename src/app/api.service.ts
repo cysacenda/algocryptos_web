@@ -29,7 +29,7 @@ export class ApiService {
       'subscribers_60d_trend', 'subscribers_90d_trend',
       'volume_mean_last_1h_vs_30d', 'volume_mean_last_3h_30d', 'volume_mean_last_6h_30d',
       'volume_mean_last_12h_30d', 'volume_mean_last_24h_30d', 'volume_mean_last_3d_30d',
-      'volume_mean_last_7d_30d', 'image'];
+      'volume_mean_last_7d_30d', 'search_7d_trend', 'search_15d_trend', 'search_1m_trend', 'image'];
   }
 
   public getCoins(): Promise<Array<Coins>> {
@@ -93,7 +93,9 @@ export class ApiService {
       'subscribers_60d_trend', 'subscribers_90d_trend',
       'volume_mean_last_1h_vs_30d', 'volume_mean_last_3h_30d', 'volume_mean_last_6h_30d',
       'volume_mean_last_12h_30d', 'volume_mean_last_24h_30d', 'volume_mean_last_3d_30d',
-      'volume_mean_last_7d_30d', 'image'];
+      'volume_mean_last_7d_30d',
+      'search_1d_trend', 'search_3d_trend', 'search_7d_trend', 'search_15d_trend', 'search_1m_trend',
+      'image'];
   }
 
   public getVisibleGridColumns(): String[] {

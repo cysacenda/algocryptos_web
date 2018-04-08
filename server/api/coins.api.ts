@@ -89,7 +89,8 @@ export class CoinsApi {
     squery += 'lohi.price_low_1y, lohi.date_low_1y, (pr.price_usd - lohi.price_low_1y) / lohi.price_low_1y as change_low_1y,\n';
     squery += 'lohi.price_high_1y, lohi.date_high_1y, (pr.price_usd - lohi.price_high_1y) / lohi.price_high_1y as change_high_1y,\n';
     squery += 'lohi.price_low_5y, lohi.date_low_5y, (pr.price_usd - lohi.price_low_5y) / lohi.price_low_5y as change_low_5y,\n';
-    squery += 'lohi.price_high_5y, lohi.date_high_5y, (pr.price_usd - lohi.price_high_5y) / lohi.price_high_5y as change_high_5y\n';
+    squery += 'lohi.price_high_5y, lohi.date_high_5y, (pr.price_usd - lohi.price_high_5y) / lohi.price_high_5y as change_high_5y,\n';
+    squery += 'kgt.search_1d_trend, kgt.search_3d_trend, kgt.search_7d_trend, kgt.search_15d_trend, kgt.search_1m_trend, kgt.timestamp as timestamp_googletrend\n';
     squery += 'from coins as co\n';
     squery += 'inner join prices as pr on (co.id_cryptocompare = pr.id_cryptocompare)\n';
     squery += 'left outer join lower_higher_prices lohi on (lohi.id_cryptocompare = co.id_cryptocompare)\n';
@@ -98,8 +99,9 @@ export class CoinsApi {
     squery += 'left outer join social_stats_reddit sr on (sr.id_cryptocompare = co.id_cryptocompare)\n';
     squery += 'left outer join kpi_reddit_subscribers kp on (kp.id_cryptocompare = co.id_cryptocompare)\n';
     squery += 'left outer join kpi_market_volumes kv on (kv.id_cryptocompare = co.id_cryptocompare)\n';
+    squery += 'left outer join kpi_googletrend kgt on (kgt.id_cryptocompare = co.id_cryptocompare)\n';
     squery += 'order by market_cap_usd desc\n';
-    // console.log(squery);
+    console.log(squery);
     pool.query(squery, (err, resp) => {
       try {
         res.json(resp['rows']);

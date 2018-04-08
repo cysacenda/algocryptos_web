@@ -209,6 +209,8 @@
       </mat-cell>
     </ng-container>
 
+
+
     <!-- Reddit subscribers 1d trend column -->
     <ng-container matColumnDef="subscribers_1d_trend">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Reddit sub. 1d trend</mat-header-cell>
@@ -251,7 +253,8 @@
       <mat-cell *matCellDef="let row" [style.color]="setColor(row.subscribers_90d_trend)"> {{row.subscribers_90d_trend | percent:'1.1'}} </mat-cell>
     </ng-container>
 
-    <!-- TODO : 24h volumes -->
+
+
     <!-- Kpi volumes mean 1h/30d -->
     <ng-container matColumnDef="volume_mean_last_1h_vs_30d">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 1h/30d</mat-header-cell>
@@ -293,6 +296,38 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Mean vol 7d/30d</mat-header-cell>
       <mat-cell *matCellDef="let row" [style.color]="setColor(row.volume_mean_last_7d_30d)"> {{row.volume_mean_last_7d_30d | percent}} </mat-cell>
     </ng-container>
+
+
+    <!-- Google Trend 1d trend -->
+    <ng-container matColumnDef="search_1d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>GG Trend 1d trend</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.search_1d_trend)"> {{row.search_1d_trend | percent}} </mat-cell>
+    </ng-container>
+
+    <!-- Google Trend 3d trend -->
+    <ng-container matColumnDef="search_3d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>GG Trend 3d trend</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.search_3d_trend)"> {{row.search_3d_trend | percent}} </mat-cell>
+    </ng-container>
+
+    <!-- Google Trend 7d trend -->
+    <ng-container matColumnDef="search_7d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>GG Trend 7d trend</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.search_7d_trend)"> {{row.search_7d_trend | percent}} </mat-cell>
+    </ng-container>
+
+    <!-- Google Trend 15d trend -->
+    <ng-container matColumnDef="search_15d_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>GG Trend 15d trend</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.search_15d_trend)"> {{row.search_15d_trend | percent}} </mat-cell>
+    </ng-container>
+
+    <!-- Google Trend 30d trend -->
+    <ng-container matColumnDef="search_1m_trend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>GG Trend 30d trend</mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="setColor(row.search_1m_trend)"> {{row.search_1m_trend | percent}} </mat-cell>
+    </ng-container>
+
 
     <!-- images -->
     <ng-container matColumnDef="image">
