@@ -72,7 +72,14 @@ export class CoinsApi {
 
   public list(req: Request, res: Response, next: NextFunction, pool: Pool) {
     let squery: String = '';
-    squery = 'select co.id_cryptocompare, co.coin_name, co.symbol, pr.price_usd, pr.market_cap_usd, pr.crypto_rank, replace(pr.crypto_name, \' \', \'-\') as NameCMC, pr.percent_change_1h,\n';
+    squery = 'select co.id_cryptocompare, co.coin_name, co.symbol,\n';
+    squery += 'case when price_usd < 0.0001 then round(CAST(price_usd as numeric), 6)\n';
+    squery += ' when price_usd < 0.001 then round(CAST(price_usd as numeric), 5)\n';
+    squery += ' when price_usd < 0.01 then round(CAST(price_usd as numeric), 4)\n';
+    squery += ' when price_usd < 0.1 then round(CAST(price_usd as numeric), 3)\n';
+    squery += 'else round(CAST(price_usd as numeric), 2)\n';
+    squery += 'end as price_usd,\n';
+    squery += 'pr.market_cap_usd, pr.crypto_rank, replace(pr.crypto_name, \' \', \'-\') as NameCMC, pr.percent_change_1h,\n';
     squery += 'pr.percent_change_24h, pr.percent_change_7d, sr.reddit_subscribers, sr.timestamp as timestamp_reddit_subscribers,\n';
     squery += 'kp.subscribers_1d_trend, kp.subscribers_3d_trend, kp.subscribers_7d_trend, kp.subscribers_15d_trend, kp.subscribers_30d_trend, kp.subscribers_60d_trend,\n';
     squery += 'kp.subscribers_90d_trend, kp.timestamp as timestamp_reddit_trend,\n';
