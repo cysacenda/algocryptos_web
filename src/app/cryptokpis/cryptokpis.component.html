@@ -58,7 +58,13 @@
     <!-- market_cap_usd Column -->
     <ng-container matColumnDef="market_cap_usd">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Market Cap</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.market_cap_usd | currency:'USD':'symbol':'1.0-0'}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.market_cap_usd | currency:'USD':'symbol':'1.0-0'}}M </mat-cell>
+    </ng-container>
+
+    <!-- volume_usd_24h Column -->
+    <ng-container matColumnDef="volume_usd_24h">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>24h vol</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.volume_usd_24h | currency:'USD':'symbol':'1.2-6'}}B </mat-cell>
     </ng-container>
 
     <!-- percent_change_1h Column -->

@@ -5,6 +5,7 @@ export interface Coins {
   symbol: String;
   price_usd: number;
   market_cap_usd: number;
+  volume_usd_24h: number;
   crypto_rank: number;
   percent_change_1h: number;
   percent_change_24h: number;

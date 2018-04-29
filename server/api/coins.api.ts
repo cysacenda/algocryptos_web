@@ -79,7 +79,13 @@ export class CoinsApi {
     squery += ' when price_usd < 0.1 then round(CAST(price_usd as numeric), 3)\n';
     squery += 'else round(CAST(price_usd as numeric), 2)\n';
     squery += 'end as price_usd,\n';
-    squery += 'pr.market_cap_usd, pr.crypto_rank, replace(pr.crypto_name, \' \', \'-\') as NameCMC, pr.percent_change_1h,\n';
+    squery += 'case when (pr.volume_usd_24h / 1000000000) < 0.00001 then round(CAST(pr.volume_usd_24h / 1000000000 as numeric), 6)\n';
+    squery += ' when (pr.volume_usd_24h / 1000000000) < 0.0001 then round(CAST(pr.volume_usd_24h / 1000000000 as numeric), 5)\n';
+    squery += ' when (pr.volume_usd_24h / 1000000000) < 0.001 then round(CAST(pr.volume_usd_24h / 1000000000 as numeric), 4)\n';
+    squery += ' when (pr.volume_usd_24h / 1000000000) < 0.01 then round(CAST(pr.volume_usd_24h / 1000000000 as numeric), 3)\n';
+    squery += 'else round(CAST(pr.volume_usd_24h / 1000000000 as numeric), 2)\n';
+    squery += 'end as volume_usd_24h,\n';
+    squery += 'pr.market_cap_usd / 1000000 as market_cap_usd, pr.crypto_rank, replace(pr.crypto_name, \' \', \'-\') as NameCMC, pr.percent_change_1h,\n';
     squery += 'pr.percent_change_24h, pr.percent_change_7d, sr.reddit_subscribers, sr.timestamp as timestamp_reddit_subscribers,\n';
     squery += 'kp.subscribers_1d_trend, kp.subscribers_3d_trend, kp.subscribers_7d_trend, kp.subscribers_15d_trend, kp.subscribers_30d_trend, kp.subscribers_60d_trend,\n';
     squery += 'kp.subscribers_90d_trend, kp.timestamp as timestamp_reddit_trend,\n';
